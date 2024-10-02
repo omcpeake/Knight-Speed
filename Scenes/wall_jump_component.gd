@@ -2,7 +2,7 @@ class_name WallJumpComponent
 extends Node
 
 @export_subgroup("Settings")
-@export var wall_jump_vertical_velocity: float = -250.0
+@export var wall_jump_vertical_velocity: float = -350.0
 @export var wall_jump_horizontal_velocity: float = 300
 
 
