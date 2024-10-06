@@ -2,5 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/wall_jump_component.gd" id="1_v0px5"]
 
-[node name="WallJumpComponent" type="Node"]
+[node name="WallJumpComponent" type="Node" node_paths=PackedStringArray("wall_jump_buffer_timer")]
 script = ExtResource("1_v0px5")
+wall_jump_buffer_timer = NodePath("WallJumpBufferTimer")
+
+[node name="WallJumpBufferTimer" type="Timer" parent="."]

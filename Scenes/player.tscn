@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cpgg1tgmt042r"]
+[gd_scene load_steps=44 format=3 uid="uid://cpgg1tgmt042r"]
 
 [ext_resource type="Texture2D" uid="uid://58o5fttc8ijb" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Idle.png" id="1_5riow"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_n52db"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://cjhe4o3xlgesq" path="res://Scenes/animation_component.tscn" id="9_p1yu8"]
 [ext_resource type="PackedScene" uid="uid://cdeb746m3nacb" path="res://Scenes/jump_component.tscn" id="10_h1381"]
 [ext_resource type="PackedScene" uid="uid://bhx7daj7b64nm" path="res://Scenes/wall_jump_component.tscn" id="11_c3j2w"]
-[ext_resource type="PackedScene" uid="uid://caawb7i2y572p" path="res://Scenes/state_machine.tscn" id="13_enb5i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ds7s0"]
 atlas = ExtResource("3_gn721")
@@ -246,11 +245,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yb28k"]
-radius = 7.0
+radius = 5.0
 height = 36.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "wall_jump_component")]
 z_index = 5
+floor_snap_length = 15.0
 script = ExtResource("1_n52db")
 gravity_component = NodePath("GravityComponent")
 input_component = NodePath("InputComponent")
@@ -262,15 +262,15 @@ wall_jump_component = NodePath("WallJumpComponent")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -20)
 sprite_frames = SubResource("SpriteFrames_npepe")
-animation = &"wall_slide"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.170462
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -18)
+position = Vector2(0, -18)
 shape = SubResource("CapsuleShape2D_yb28k")
 
 [node name="GravityComponent" parent="." instance=ExtResource("4_xjp62")]
+gravity = 1300.0
 
 [node name="InputComponent" parent="." instance=ExtResource("6_oppmc")]
 
@@ -282,5 +282,3 @@ sprite = NodePath("../AnimatedSprite2D")
 [node name="JumpComponent" parent="." instance=ExtResource("10_h1381")]
 
 [node name="WallJumpComponent" parent="." instance=ExtResource("11_c3j2w")]
-
-[node name="StateMachine" parent="." instance=ExtResource("13_enb5i")]
