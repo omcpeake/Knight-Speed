@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpkkbxhmu6ilf"]
+
+[ext_resource type="Script" path="res://Scenes/slide_component.gd" id="1_n7ybt"]
+
+[node name="SlideComponent" type="Node2D" node_paths=PackedStringArray("upper_left", "upper_right", "lower_left", "lower_right")]
+script = ExtResource("1_n7ybt")
+upper_left = NodePath("UpperLeftRaycast")
+upper_right = NodePath("UpperRightRaycast")
+lower_left = NodePath("LowerLeftRaycast")
+lower_right = NodePath("LowerRightRaycast")
+
+[node name="UpperLeftRaycast" type="RayCast2D" parent="."]
+position = Vector2(-3, -17)
+target_position = Vector2(0, -5)
+
+[node name="UpperRightRaycast" type="RayCast2D" parent="."]
+position = Vector2(4, -17)
+target_position = Vector2(0, -5)
+
+[node name="LowerLeftRaycast" type="RayCast2D" parent="."]
+position = Vector2(-3, -14)
+rotation = 3.13485
+target_position = Vector2(0, -5)
+
+[node name="LowerRightRaycast" type="RayCast2D" parent="."]
+position = Vector2(4, -14)
+rotation = 3.13711
+target_position = Vector2(0, -5)

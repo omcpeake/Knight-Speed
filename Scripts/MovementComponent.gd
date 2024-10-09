@@ -5,15 +5,20 @@ extends Node
 @export var speed: float = 250
 @export var ground_accel_speed: float = 15
 @export var ground_decel_speed: float = 20
+@export var slide_accel_speed: float = 20
+@export var slide_decel_speed: float = 3
 @export var air_accel_speed: float = 20
 @export var air_decel_speed: float = 3
 @export var wall_accel_speed: float = 2
 
 
-func handle_horizontal_movement(body: CharacterBody2D, direction: float) -> void:
+func handle_horizontal_movement(body: CharacterBody2D, direction: float, is_sliding: bool) -> void:
 	var velocity_change_speed: float = 0.0
 	if body.is_on_floor():
-		velocity_change_speed = ground_accel_speed if direction!=0 else ground_decel_speed
+		if is_sliding:
+			body.velocity.x = move_toward(body.velocity.x, direction * 0, slide_decel_speed)
+		else:
+			velocity_change_speed = ground_accel_speed if direction!=0 else ground_decel_speed
 	elif body.is_on_wall():
 		velocity_change_speed = wall_accel_speed
 	else:

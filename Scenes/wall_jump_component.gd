@@ -12,7 +12,10 @@ func handle_wall_jump(body: CharacterBody2D, direction: float, is_wall_sliding: 
 	if want_to_jump and is_wall_sliding:
 		body.velocity.y = wall_jump_vertical_velocity
 		body.velocity.x = wall_jump_horizontal_velocity * (direction * -1)
+		
+
 
 func wall_jump(body: CharacterBody2D, direction: float) -> void:
 	body.velocity.y = wall_jump_vertical_velocity
 	body.velocity.x = wall_jump_horizontal_velocity * (direction * -1)
+	
