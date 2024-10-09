@@ -2,10 +2,9 @@ class_name SlideComponent
 extends Node
 
 @export_subgroup("Nodes")
-@export var upper_left: RayCast2D
-@export var upper_right: RayCast2D
-@export var lower_left: RayCast2D
-@export var lower_right: RayCast2D
+@export var upper: RayCast2D
+@export var lower: RayCast2D
+
 var is_sliding: bool = false
 
 
@@ -24,13 +23,12 @@ func check_if_stuck(body: CharacterBody2D, want_to_slide: bool) -> void:
 			is_sliding = false
 			
 func all_raycasts_colliding() -> bool:
-	if upper_left.is_colliding() and upper_right.is_colliding() or lower_left.is_colliding() and lower_right.is_colliding() :
-		print("stuck")
+	if upper.is_colliding() and lower.is_colliding():
 		return true
 	else:
 		return false
 	
 func reposition_body(body: CharacterBody2D) -> void:
-	body.position.x += 50
+	body.position.x += 20
 
 

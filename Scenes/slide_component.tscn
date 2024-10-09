@@ -2,27 +2,20 @@
 
 [ext_resource type="Script" path="res://Scenes/slide_component.gd" id="1_n7ybt"]
 
-[node name="SlideComponent" type="Node2D" node_paths=PackedStringArray("upper_left", "upper_right", "lower_left", "lower_right")]
+[node name="SlideComponent" type="Node2D" node_paths=PackedStringArray("upper", "lower")]
 script = ExtResource("1_n7ybt")
-upper_left = NodePath("UpperLeftRaycast")
-upper_right = NodePath("UpperRightRaycast")
-lower_left = NodePath("LowerLeftRaycast")
-lower_right = NodePath("LowerRightRaycast")
+upper = NodePath("UpperRaycast")
+lower = NodePath("LowerRaycast")
 
-[node name="UpperLeftRaycast" type="RayCast2D" parent="."]
-position = Vector2(-3, -17)
+[node name="UpperRaycast" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
 target_position = Vector2(0, -5)
+collision_mask = 2
+hit_from_inside = true
 
-[node name="UpperRightRaycast" type="RayCast2D" parent="."]
-position = Vector2(4, -17)
-target_position = Vector2(0, -5)
-
-[node name="LowerLeftRaycast" type="RayCast2D" parent="."]
-position = Vector2(-3, -14)
-rotation = 3.13485
-target_position = Vector2(0, -5)
-
-[node name="LowerRightRaycast" type="RayCast2D" parent="."]
-position = Vector2(4, -14)
-rotation = 3.13711
-target_position = Vector2(0, -5)
+[node name="LowerRaycast" type="RayCast2D" parent="."]
+position = Vector2(0, -1)
+rotation = 3.14159
+target_position = Vector2(-1.26759e-05, 5)
+collision_mask = 2
+hit_from_inside = true

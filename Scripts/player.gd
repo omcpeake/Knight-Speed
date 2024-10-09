@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var jump_component: JumpComponent
 @export var wall_jump_component: WallJumpComponent
 @export var slide_component: SlideComponent
+@export var health_component: HealthComponent
 
 @onready var standing_collision = $StandingCollision
 @onready var crouching_collision = $CrouchingCollision
