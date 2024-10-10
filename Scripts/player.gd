@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @export_subgroup("Nodes")
@@ -28,6 +29,8 @@ func _physics_process(delta):
 	jump_component.handle_jump(self, input_component.get_jump_input(), input_component.get_jump_input_released())
 	wall_jump_component.handle_wall_jump(self, input_component.input_horizontal, gravity_component.is_wall_sliding, input_component.get_jump_input())
 	animation_component.handle_jump_animation(jump_component.is_going_up, gravity_component.is_falling, gravity_component.is_wall_sliding)
+	
+	print(health_component.current_hp)
 	
 	move_and_slide()
 

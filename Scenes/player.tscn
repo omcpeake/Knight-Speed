@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cpgg1tgmt042r"]
+[gd_scene load_steps=50 format=3 uid="uid://cpgg1tgmt042r"]
 
 [ext_resource type="Texture2D" uid="uid://58o5fttc8ijb" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Idle.png" id="1_5riow"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_n52db"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cdeb746m3nacb" path="res://Scenes/jump_component.tscn" id="10_h1381"]
 [ext_resource type="PackedScene" uid="uid://bhx7daj7b64nm" path="res://Scenes/wall_jump_component.tscn" id="11_c3j2w"]
 [ext_resource type="PackedScene" uid="uid://dpkkbxhmu6ilf" path="res://Scenes/slide_component.tscn" id="13_nx3x6"]
+[ext_resource type="PackedScene" uid="uid://k40fwd340pol" path="res://Scenes/health_component.tscn" id="15_lwdi3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ds7s0"]
 atlas = ExtResource("3_gn721")
@@ -272,7 +273,7 @@ height = 35.999
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4lfo"]
 size = Vector2(9.35995, 23.5335)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "wall_jump_component", "slide_component")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "wall_jump_component", "slide_component", "health_component")]
 z_index = 5
 floor_snap_length = 10.0
 script = ExtResource("1_n52db")
@@ -283,6 +284,7 @@ animation_component = NodePath("AnimationComponent")
 jump_component = NodePath("JumpComponent")
 wall_jump_component = NodePath("WallJumpComponent")
 slide_component = NodePath("SlideComponent")
+health_component = NodePath("HealthComponent")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -20)
@@ -315,4 +317,6 @@ sprite = NodePath("../AnimatedSprite2D")
 [node name="WallJumpComponent" parent="." instance=ExtResource("11_c3j2w")]
 
 [node name="SlideComponent" parent="." instance=ExtResource("13_nx3x6")]
-position = Vector2(3, -30)
+position = Vector2(3, -23)
+
+[node name="HealthComponent" parent="." instance=ExtResource("15_lwdi3")]

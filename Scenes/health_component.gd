@@ -2,9 +2,10 @@ class_name HealthComponent
 extends Node
 
 @export_subgroup("Settings")
-@export var max_hp: float = 100
+@export var max_hp: float = 10
 var current_hp: float = max_hp
 var is_dead: bool =  false
+
 
 func take_damage(damage: float) -> void:
 	current_hp -= damage
