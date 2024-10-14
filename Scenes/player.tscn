@@ -308,6 +308,7 @@ gravity = 1300.0
 [node name="InputComponent" parent="." instance=ExtResource("6_oppmc")]
 
 [node name="MovementComponent" parent="." instance=ExtResource("7_200pg")]
+speed = 280.0
 
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_p1yu8")]
 sprite = NodePath("../AnimatedSprite2D")

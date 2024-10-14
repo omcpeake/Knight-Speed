@@ -14,8 +14,11 @@ extends CharacterBody2D
 @onready var standing_collision = $StandingCollision
 @onready var crouching_collision = $CrouchingCollision
 
+var spawn_point : Vector2 = self.position
+
 
 func _physics_process(delta):	
+	
 	gravity_component.handle_gravity(self, delta)
 	#ground
 	slide_component.handle_slide(self, input_component.get_slide_input())
@@ -42,3 +45,9 @@ func update_capsule_collision() -> void:
 		standing_collision.disabled = false
 		crouching_collision.disabled = true
 		
+
+func respawn():
+	pass
+	
+func update_spawn_point(new_spawn_point : Vector2):
+	spawn_point = new_spawn_point

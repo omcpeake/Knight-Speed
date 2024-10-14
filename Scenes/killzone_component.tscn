@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://xvpy6tqw0myo"]
+[gd_scene load_steps=2 format=3 uid="uid://xvpy6tqw0myo"]
 
-[node name="KillzoneComponent" type="Node2D"]
+[ext_resource type="Script" path="res://Scenes/killzone_component.gd" id="1_bjpyt"]
+
+[node name="KillzoneComponent" type="Node"]
+script = ExtResource("1_bjpyt")

@@ -17,3 +17,7 @@ func heal(healing: float) -> void:
 	current_hp += healing
 	if current_hp >= max_hp:
 		current_hp = max_hp
+		
+func kill() -> void:
+	current_hp = 0
+	is_dead = true
