@@ -1,7 +1,8 @@
-[gd_scene load_steps=50 format=3 uid="uid://cpgg1tgmt042r"]
+[gd_scene load_steps=61 format=3 uid="uid://cpgg1tgmt042r"]
 
 [ext_resource type="Texture2D" uid="uid://58o5fttc8ijb" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Idle.png" id="1_5riow"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_n52db"]
+[ext_resource type="Texture2D" uid="uid://dw55qsfbnwvb" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_DeathNoMovement.png" id="2_g1kn6"]
 [ext_resource type="Texture2D" uid="uid://8j7vpofl5e1w" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Fall.png" id="3_gn721"]
 [ext_resource type="Texture2D" uid="uid://ydplxdos1lvl" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Run.png" id="3_owp8e"]
 [ext_resource type="Texture2D" uid="uid://b2wl03hec0d1x" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Jump.png" id="4_w068m"]
@@ -15,6 +16,46 @@
 [ext_resource type="PackedScene" uid="uid://bhx7daj7b64nm" path="res://Scenes/wall_jump_component.tscn" id="11_c3j2w"]
 [ext_resource type="PackedScene" uid="uid://dpkkbxhmu6ilf" path="res://Scenes/slide_component.tscn" id="13_nx3x6"]
 [ext_resource type="PackedScene" uid="uid://k40fwd340pol" path="res://Scenes/health_component.tscn" id="15_lwdi3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24p70"]
+atlas = ExtResource("2_g1kn6")
+region = Rect2(0, 40, 120, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_newue"]
+atlas = ExtResource("2_g1kn6")
+region = Rect2(120, 40, 120, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q17me"]
+atlas = ExtResource("2_g1kn6")
+region = Rect2(240, 40, 120, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahcoi"]
+atlas = ExtResource("2_g1kn6")
+region = Rect2(360, 40, 120, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr6nw"]
+atlas = ExtResource("2_g1kn6")
+region = Rect2(480, 40, 120, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04n3c"]
+atlas = ExtResource("2_g1kn6")
+region = Rect2(600, 40, 120, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suhqo"]
+atlas = ExtResource("2_g1kn6")
+region = Rect2(720, 40, 120, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6r2m"]
+atlas = ExtResource("2_g1kn6")
+region = Rect2(840, 40, 120, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ici5o"]
+atlas = ExtResource("2_g1kn6")
+region = Rect2(960, 40, 120, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arxwy"]
+atlas = ExtResource("2_g1kn6")
+region = Rect2(1080, 40, 120, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ds7s0"]
 atlas = ExtResource("3_gn721")
@@ -142,6 +183,41 @@ region = Rect2(240, 40, 120, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_npepe"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24p70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_newue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q17me")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahcoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr6nw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04n3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suhqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6r2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ici5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arxwy")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ds7s0")
@@ -289,7 +365,7 @@ health_component = NodePath("HealthComponent")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -20)
 sprite_frames = SubResource("SpriteFrames_npepe")
-animation = &"run"
+animation = &"dead"
 autoplay = "idle"
 
 [node name="StandingCollision" type="CollisionShape2D" parent="."]
@@ -321,3 +397,4 @@ sprite = NodePath("../AnimatedSprite2D")
 position = Vector2(3, -23)
 
 [node name="HealthComponent" parent="." instance=ExtResource("15_lwdi3")]
+can_respawn = true

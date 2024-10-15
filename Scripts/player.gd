@@ -15,23 +15,28 @@ extends CharacterBody2D
 @onready var crouching_collision = $CrouchingCollision
 
 var spawn_point : Vector2 = self.position
+var movement_enabled : bool = true
+
 
 
 func _physics_process(delta):	
 	
 	gravity_component.handle_gravity(self, delta)
-	#ground
-	slide_component.handle_slide(self, input_component.get_slide_input())
-	movement_component.handle_horizontal_movement(self, input_component.input_horizontal, slide_component.is_sliding)
-	update_capsule_collision()
-	#ground animations
-	animation_component.handle_move_animation(input_component.input_horizontal)
-	animation_component.handle_slide_animation(slide_component.is_sliding)
+	if(movement_enabled):
+		#ground
+		slide_component.handle_slide(self, input_component.get_slide_input())
+		movement_component.handle_horizontal_movement(self, input_component.input_horizontal, slide_component.is_sliding)
+		update_capsule_collision()
+		#ground animations
+		animation_component.handle_move_animation(input_component.input_horizontal)
+		animation_component.handle_slide_animation(slide_component.is_sliding)
 
-	#air
-	jump_component.handle_jump(self, input_component.get_jump_input(), input_component.get_jump_input_released())
-	wall_jump_component.handle_wall_jump(self, input_component.input_horizontal, gravity_component.is_wall_sliding, input_component.get_jump_input())
-	animation_component.handle_jump_animation(jump_component.is_going_up, gravity_component.is_falling, gravity_component.is_wall_sliding)
+		#air
+		jump_component.handle_jump(self, input_component.get_jump_input(), input_component.get_jump_input_released())
+		wall_jump_component.handle_wall_jump(self, input_component.input_horizontal, gravity_component.is_wall_sliding, input_component.get_jump_input())
+		animation_component.handle_jump_animation(jump_component.is_going_up, gravity_component.is_falling, gravity_component.is_wall_sliding)
+		
+		check_if_alive()
 	
 	print(health_component.current_hp)
 	
@@ -45,6 +50,13 @@ func update_capsule_collision() -> void:
 		standing_collision.disabled = false
 		crouching_collision.disabled = true
 		
+func check_if_alive():
+	if health_component.is_dead:
+		movement_enabled = false
+		movement_component.stop_movement(self)
+		animation_component.handle_death_animation()
+	else:
+		movement_enabled = true
 
 func respawn():
 	pass

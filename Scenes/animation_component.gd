@@ -29,4 +29,8 @@ func handle_jump_animation(is_jumping: bool, is_falling: bool, is_wall_sliding) 
 	elif is_falling:
 		sprite.play("fall")
 	
-		
+func handle_death_animation():
+	#death checked before calling
+	sprite.play("dead")
+	
+

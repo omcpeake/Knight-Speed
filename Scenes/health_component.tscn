@@ -2,5 +2,12 @@
 
 [ext_resource type="Script" path="res://Scenes/health_component.gd" id="1_n8elh"]
 
-[node name="HealthComponent" type="Node"]
+[node name="HealthComponent" type="Node" node_paths=PackedStringArray("respawn_timer")]
 script = ExtResource("1_n8elh")
+respawn_timer = NodePath("RespawnTimer")
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

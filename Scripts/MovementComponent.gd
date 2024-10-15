@@ -25,3 +25,6 @@ func handle_horizontal_movement(body: CharacterBody2D, direction: float, is_slid
 		velocity_change_speed = air_accel_speed if direction!=0 else air_decel_speed
 		
 	body.velocity.x = move_toward(body.velocity.x, direction * speed, velocity_change_speed)
+
+func stop_movement(body: CharacterBody2D) -> void :
+	body.velocity = Vector2(0,0)
