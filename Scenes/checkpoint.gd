@@ -9,4 +9,4 @@ func _on_body_entered(body:CharacterBody2D):
 		save_spawn_point(player)
 
 func save_spawn_point(player : Player) -> void:
-	player.update_spawn_point(location)
+	player.update_spawn_point(self.position)

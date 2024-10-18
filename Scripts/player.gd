@@ -14,7 +14,7 @@ extends CharacterBody2D
 @onready var standing_collision = $StandingCollision
 @onready var crouching_collision = $CrouchingCollision
 
-var spawn_point : Vector2 = self.position
+var spawn_point : Vector2
 var movement_enabled : bool = true
 
 
@@ -25,7 +25,7 @@ func _physics_process(delta):
 	if(movement_enabled):
 		#ground
 		slide_component.handle_slide(self, input_component.get_slide_input())
-		movement_component.handle_horizontal_movement(self, input_component.input_horizontal, slide_component.is_sliding)
+		movement_component.handle_horizontal_movement(self, input_component.input_horizontal, slide_component.is_sliding, gravity_component.is_falling)
 		update_capsule_collision()
 		#ground animations
 		animation_component.handle_move_animation(input_component.input_horizontal)
@@ -38,6 +38,9 @@ func _physics_process(delta):
 		
 		check_if_alive()
 	
+	if health_component.is_dead:
+		respawn()
+		
 	print(health_component.current_hp)
 	
 	move_and_slide()
@@ -59,7 +62,11 @@ func check_if_alive():
 		movement_enabled = true
 
 func respawn():
-	pass
+	if health_component.respawn_ready:
+		health_component.respawn()
+		position = spawn_point
+		check_if_alive()
 	
 func update_spawn_point(new_spawn_point : Vector2):
 	spawn_point = new_spawn_point
+	print("spawn point updated")

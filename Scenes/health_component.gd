@@ -6,10 +6,15 @@ extends Node
 
 @export_subgroup("Settings")
 @export var max_hp: float = 10
-var current_hp: float = max_hp
+var current_hp: float = 1
 var is_dead: bool =  false
 @export var can_respawn: bool = false
-@export var respawn_delay: float = 2
+@export var respawn_delay: float = 1
+
+var respawn_ready : bool = false
+
+func _ready():
+	current_hp = max_hp
 
 func take_damage(damage: float) -> void:
 	current_hp -= damage
@@ -32,8 +37,9 @@ func handle_death() ->void:
 		respawn_timer.start()
 
 func respawn() -> void:
-	#TODO implement
-	print("pretend you respawned")
+	respawn_ready = false
+	current_hp = max_hp
+	is_dead = false
 
 func _on_respawn_timer_timeout():
-	respawn()
+	respawn_ready = true

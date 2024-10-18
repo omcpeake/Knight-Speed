@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdm2aw7ubeuxs"]
 
-[ext_resource type="Script" path="res://Scenes/spikes.gd" id="1_tn76t"]
+[ext_resource type="Script" path="res://Scenes/spike.gd" id="1_4uav4"]
 [ext_resource type="Texture2D" uid="uid://bdkimf8exhr1v" path="res://Assets/spike1.png" id="2_2blg3"]
 [ext_resource type="Script" path="res://Scenes/killzone_component.gd" id="3_liuog"]
 
@@ -8,7 +8,7 @@
 size = Vector2(14, 10)
 
 [node name="Spike" type="Area2D" node_paths=PackedStringArray("killzone_component")]
-script = ExtResource("1_tn76t")
+script = ExtResource("1_4uav4")
 killzone_component = NodePath("KillzoneComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

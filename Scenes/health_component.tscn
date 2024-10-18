@@ -7,7 +7,6 @@ script = ExtResource("1_n8elh")
 respawn_timer = NodePath("RespawnTimer")
 
 [node name="RespawnTimer" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
