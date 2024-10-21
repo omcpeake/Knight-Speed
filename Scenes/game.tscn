@@ -1266,7 +1266,7 @@ texture = ExtResource("2_5nqc2")
 physics_layer_0/collision_layer = 3
 sources/0 = SubResource("TileSetAtlasSource_yinux")
 
-[node name="Game" type="Node2D"]
+[node name="Level1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_myysj")]
 position = Vector2(3468, -254)
