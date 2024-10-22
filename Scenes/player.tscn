@@ -6,16 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://8j7vpofl5e1w" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Fall.png" id="3_gn721"]
 [ext_resource type="Texture2D" uid="uid://ydplxdos1lvl" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Run.png" id="3_owp8e"]
 [ext_resource type="Texture2D" uid="uid://b2wl03hec0d1x" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Jump.png" id="4_w068m"]
-[ext_resource type="PackedScene" uid="uid://cfri8kd8qq3fk" path="res://Scenes/gravity_component.tscn" id="4_xjp62"]
 [ext_resource type="Texture2D" uid="uid://bdqu72ld6b36k" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_WallSlide.png" id="6_14o1g"]
-[ext_resource type="PackedScene" uid="uid://cxofpkd6adspv" path="res://Scenes/input_component.tscn" id="6_oppmc"]
 [ext_resource type="Texture2D" uid="uid://dfeplplw1qqo6" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_SlideAll.png" id="6_pxk65"]
-[ext_resource type="PackedScene" uid="uid://br777x3qmu27c" path="res://Scenes/movement_component.tscn" id="7_200pg"]
-[ext_resource type="PackedScene" uid="uid://cjhe4o3xlgesq" path="res://Scenes/animation_component.tscn" id="9_p1yu8"]
-[ext_resource type="PackedScene" uid="uid://cdeb746m3nacb" path="res://Scenes/jump_component.tscn" id="10_h1381"]
-[ext_resource type="PackedScene" uid="uid://bhx7daj7b64nm" path="res://Scenes/wall_jump_component.tscn" id="11_c3j2w"]
-[ext_resource type="PackedScene" uid="uid://dpkkbxhmu6ilf" path="res://Scenes/slide_component.tscn" id="13_nx3x6"]
-[ext_resource type="PackedScene" uid="uid://k40fwd340pol" path="res://Scenes/health_component.tscn" id="15_lwdi3"]
+[ext_resource type="PackedScene" uid="uid://cjhe4o3xlgesq" path="res://Scenes/components/animation_component.tscn" id="9_p1yu8"]
+[ext_resource type="PackedScene" uid="uid://cfri8kd8qq3fk" path="res://Scenes/components/gravity_component.tscn" id="9_qm0m2"]
+[ext_resource type="PackedScene" uid="uid://cxofpkd6adspv" path="res://Scenes/components/input_component.tscn" id="10_7vrsc"]
+[ext_resource type="PackedScene" uid="uid://br777x3qmu27c" path="res://Scenes/components/movement_component.tscn" id="11_vlomr"]
+[ext_resource type="PackedScene" uid="uid://cdeb746m3nacb" path="res://Scenes/components/jump_component.tscn" id="13_flvqh"]
+[ext_resource type="PackedScene" uid="uid://bhx7daj7b64nm" path="res://Scenes/components/wall_jump_component.tscn" id="14_vo8fn"]
+[ext_resource type="PackedScene" uid="uid://dpkkbxhmu6ilf" path="res://Scenes/components/slide_component.tscn" id="15_0mxp2"]
+[ext_resource type="PackedScene" uid="uid://k40fwd340pol" path="res://Scenes/components/health_component.tscn" id="16_igopq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24p70"]
 atlas = ExtResource("2_g1kn6")
@@ -365,10 +365,8 @@ health_component = NodePath("HealthComponent")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -20)
 sprite_frames = SubResource("SpriteFrames_npepe")
-animation = &"dead"
+animation = &"idle"
 autoplay = "idle"
-frame = 9
-frame_progress = 1.0
 
 [node name="StandingCollision" type="CollisionShape2D" parent="."]
 position = Vector2(3, -19)
@@ -380,24 +378,24 @@ rotation = 1.57836
 shape = SubResource("RectangleShape2D_a4lfo")
 disabled = true
 
-[node name="GravityComponent" parent="." instance=ExtResource("4_xjp62")]
+[node name="GravityComponent" parent="." instance=ExtResource("9_qm0m2")]
 gravity = 1300.0
 
-[node name="InputComponent" parent="." instance=ExtResource("6_oppmc")]
+[node name="InputComponent" parent="." instance=ExtResource("10_7vrsc")]
 
-[node name="MovementComponent" parent="." instance=ExtResource("7_200pg")]
+[node name="MovementComponent" parent="." instance=ExtResource("11_vlomr")]
 speed = 280.0
 
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("9_p1yu8")]
 sprite = NodePath("../AnimatedSprite2D")
 
-[node name="JumpComponent" parent="." instance=ExtResource("10_h1381")]
+[node name="JumpComponent" parent="." instance=ExtResource("13_flvqh")]
 
-[node name="WallJumpComponent" parent="." instance=ExtResource("11_c3j2w")]
+[node name="WallJumpComponent" parent="." instance=ExtResource("14_vo8fn")]
 
-[node name="SlideComponent" parent="." instance=ExtResource("13_nx3x6")]
+[node name="SlideComponent" parent="." instance=ExtResource("15_0mxp2")]
 position = Vector2(3, -23)
 
-[node name="HealthComponent" parent="." instance=ExtResource("15_lwdi3")]
+[node name="HealthComponent" parent="." instance=ExtResource("16_igopq")]
 max_hp = 5.0
 can_respawn = true

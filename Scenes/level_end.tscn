@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6ko3ldmklk1c"]
+
+[ext_resource type="Script" path="res://Scenes/level_end.gd" id="1_pbxo7"]
+[ext_resource type="Texture2D" uid="uid://dio4dvvfwphjp" path="res://Assets/parallaxcave/8fx.png" id="2_e8edy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k42ub"]
+size = Vector2(124, 70)
+
+[node name="LevelEnd" type="Area2D"]
+script = ExtResource("1_pbxo7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -36)
+shape = SubResource("RectangleShape2D_k42ub")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -65)
+scale = Vector2(0.0800007, 0.12)
+texture = ExtResource("2_e8edy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

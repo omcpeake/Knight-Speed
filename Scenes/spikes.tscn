@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/spike.gd" id="1_4uav4"]
 [ext_resource type="Texture2D" uid="uid://bdkimf8exhr1v" path="res://Assets/spike1.png" id="2_2blg3"]
-[ext_resource type="Script" path="res://Scenes/killzone_component.gd" id="3_liuog"]
+[ext_resource type="Script" path="res://Scenes/components/killzone_component.gd" id="3_5kh50"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iuyt3"]
 size = Vector2(14, 10)
@@ -21,6 +21,6 @@ scale = Vector2(0.44, 0.400001)
 texture = ExtResource("2_2blg3")
 
 [node name="KillzoneComponent" type="Node" parent="."]
-script = ExtResource("3_liuog")
+script = ExtResource("3_5kh50")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

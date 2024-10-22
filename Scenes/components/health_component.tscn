@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://k40fwd340pol"]
 
-[ext_resource type="Script" path="res://Scenes/health_component.gd" id="1_n8elh"]
+[ext_resource type="Script" path="res://Scenes/components/health_component.gd" id="1_8fs3q"]
 
 [node name="HealthComponent" type="Node" node_paths=PackedStringArray("respawn_timer")]
-script = ExtResource("1_n8elh")
+script = ExtResource("1_8fs3q")
 respawn_timer = NodePath("RespawnTimer")
 
 [node name="RespawnTimer" type="Timer" parent="."]

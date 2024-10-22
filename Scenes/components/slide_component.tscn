@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dpkkbxhmu6ilf"]
 
-[ext_resource type="Script" path="res://Scenes/slide_component.gd" id="1_n7ybt"]
+[ext_resource type="Script" path="res://Scenes/components/slide_component.gd" id="1_x2nje"]
 
 [node name="SlideComponent" type="Node2D" node_paths=PackedStringArray("upper", "lower")]
-script = ExtResource("1_n7ybt")
+script = ExtResource("1_x2nje")
 upper = NodePath("UpperRaycast")
 lower = NodePath("LowerRaycast")
 

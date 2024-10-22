@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1kckgf0e3xnm"]
 
 [ext_resource type="Script" path="res://Scenes/deathplane.gd" id="1_3ajgm"]
-[ext_resource type="Script" path="res://Scenes/killzone_component.gd" id="2_tb4gx"]
+[ext_resource type="Script" path="res://Scenes/components/killzone_component.gd" id="2_v3ab5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4bshq"]
 
@@ -14,6 +14,6 @@ killzone_component = NodePath("KillzoneComponent")
 shape = SubResource("WorldBoundaryShape2D_4bshq")
 
 [node name="KillzoneComponent" type="Node" parent="."]
-script = ExtResource("2_tb4gx")
+script = ExtResource("2_v3ab5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
