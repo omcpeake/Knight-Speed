@@ -9,8 +9,9 @@ var is_falling: bool = false
 var is_wall_sliding: bool = false
 
 func handle_gravity(body: CharacterBody2D, delta: float) -> void:
+	is_falling = body.velocity.y > 0 and not body.is_on_floor()
 	is_wall_sliding = body.is_on_wall() and not body.is_on_floor()
-	is_falling = body.velocity.y > 0 and not body.is_on_floor() and not is_wall_sliding
+	
 
 	if not body.is_on_floor():
 		if is_wall_sliding and body.velocity.y > 0:

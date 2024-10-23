@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2llx65hrhkdq"]
 
 [ext_resource type="Script" path="res://Scenes/menu/menu.gd" id="1_4whq7"]
-[ext_resource type="Texture2D" uid="uid://pwdo1v0xw0qo" path="res://Assets/Swamp/Mockup.png" id="2_1ym5d"]
+[ext_resource type="Texture2D" uid="uid://b2uqs7xsostj8" path="res://Assets/blackgraybg.png" id="2_jkv4n"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n72py"]
-texture = ExtResource("2_1ym5d")
+texture = ExtResource("2_jkv4n")
 
 [node name="Menu" type="Control" node_paths=PackedStringArray("default_button")]
 layout_mode = 3
@@ -30,10 +30,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 72.0
-offset_top = -324.0
-offset_right = 279.0
-offset_bottom = -82.0
+offset_left = 216.0
+offset_top = -371.0
+offset_right = 423.0
+offset_bottom = -129.0
 grow_vertical = 0
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]

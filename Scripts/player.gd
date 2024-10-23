@@ -41,7 +41,6 @@ func _physics_process(delta):
 	if health_component.is_dead:
 		respawn()
 		
-	print(health_component.current_hp)
 	
 	move_and_slide()
 

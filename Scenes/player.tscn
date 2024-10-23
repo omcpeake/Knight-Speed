@@ -343,11 +343,11 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yb28k"]
-radius = 5.0
+radius = 2.0
 height = 35.999
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4lfo"]
-size = Vector2(9.35995, 23.5335)
+size = Vector2(10.6874, 20.3716)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "wall_jump_component", "slide_component", "health_component")]
 z_index = 5
@@ -373,7 +373,7 @@ position = Vector2(3, -19)
 shape = SubResource("CapsuleShape2D_yb28k")
 
 [node name="CrouchingCollision" type="CollisionShape2D" parent="."]
-position = Vector2(4, -5)
+position = Vector2(3.19348, -4.97585)
 rotation = 1.57836
 shape = SubResource("RectangleShape2D_a4lfo")
 disabled = true
