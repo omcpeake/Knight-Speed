@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b5xoyi01exei"]
+[gd_scene load_steps=14 format=3 uid="uid://b5xoyi01exei"]
 
 [ext_resource type="PackedScene" uid="uid://cpgg1tgmt042r" path="res://Scenes/player.tscn" id="1_4obxc"]
 [ext_resource type="Texture2D" uid="uid://bja6hp6i80x54" path="res://Assets/oak_woods_v1.0/oak_woods_tileset.png" id="2_26tlg"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bejac5cxvoydp" path="res://Assets/Tree_1_256b.png" id="7_y6wm4"]
 [ext_resource type="Texture2D" uid="uid://c6ifwfte3tk7w" path="res://Assets/parallax_demon_woods_pack/layers/parallax-demon-woods-close-trees.png" id="8_24fms"]
 [ext_resource type="Texture2D" uid="uid://qi5mmn4a5m40" path="res://Assets/Tree_2_256b.png" id="8_478qe"]
+[ext_resource type="PackedScene" uid="uid://c1nojrgmkwtde" path="res://Scenes/projectile_shooter.tscn" id="11_bfrde"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uu81q"]
 texture = ExtResource("2_26tlg")
@@ -719,3 +720,14 @@ position = Vector2(1, 110)
 color = Color(0.999997, 0.460788, 0.528225, 1)
 
 [node name="Traps" type="Node" parent="."]
+
+[node name="ProjectileShooter" parent="Traps" instance=ExtResource("11_bfrde")]
+position = Vector2(1940, 69)
+rotation = -0.0267379
+scale = Vector2(1.03413, 1.05686)
+
+[node name="ProjectileShooter2" parent="Traps" node_paths=PackedStringArray("fire_timer") instance=ExtResource("11_bfrde")]
+position = Vector2(141, -47)
+rotation = -0.0267379
+scale = Vector2(1.03413, 1.05686)
+fire_timer = NodePath("../ProjectileShooter/Timer")

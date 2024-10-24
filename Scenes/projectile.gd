@@ -1,0 +1,33 @@
+class_name Projectile
+extends CharacterBody2D
+
+@export_subgroup("Nodes")
+@export var killzone_component: KillzoneComponent
+@export var ttl_timer: Timer
+@export_subgroup("Settings")
+@export var speed: float = 200
+@export var damage: float = 5
+@export var time_to_live: float = 10
+
+var direction: float
+var spawn_pos: Vector2
+var spawn_rot: float
+
+func _ready():
+	global_position = spawn_pos
+	global_rotation = spawn_rot
+	ttl_timer.start(time_to_live)
+	
+func _physics_process(delta):
+	velocity = Vector2(0,-speed).rotated(direction)
+	move_and_slide()
+	
+func _on_area_2d_body_entered(body):
+	if body is Player:
+		killzone_component.damage_unit(body, damage)
+		queue_free()
+
+
+func _on_time_to_live_timeout():
+	#destroy projectile after lifetime ends
+	queue_free()
