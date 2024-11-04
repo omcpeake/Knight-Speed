@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/projectile_shooter.gd" id="1_ux1t7"]
 [ext_resource type="PackedScene" uid="uid://cecnh4vwgvote" path="res://Scenes/projectile.tscn" id="2_it7o0"]
-[ext_resource type="Texture2D" uid="uid://bv6480pxjbxb8" path="res://Assets/super_pixel_cave/style_D/PNG/terrain_bottom_center.png" id="3_tvjb0"]
+[ext_resource type="Texture2D" uid="uid://g66mb0u0hgb2" path="res://Assets/cannon1.png" id="3_o0fq0"]
 
 [node name="ProjectileShooter" type="Node2D" node_paths=PackedStringArray("fire_timer")]
 script = ExtResource("1_ux1t7")
@@ -10,11 +10,13 @@ projectile = ExtResource("2_it7o0")
 fire_timer = NodePath("Timer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-texture = ExtResource("3_tvjb0")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_o0fq0")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
+wait_time = 10.0
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(0, -18)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://cecnh4vwgvote"]
 
 [ext_resource type="Script" path="res://Scenes/projectile.gd" id="1_x1y5w"]
-[ext_resource type="Texture2D" uid="uid://bdkimf8exhr1v" path="res://Assets/spike1.png" id="2_6qqfi"]
+[ext_resource type="Texture2D" uid="uid://3fxbamvqcvtr" path="res://Assets/fireball1.png" id="2_18ocw"]
 [ext_resource type="PackedScene" uid="uid://xvpy6tqw0myo" path="res://Scenes/components/killzone_component.tscn" id="3_x3rua"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0slhf"]
-size = Vector2(13, 32)
+[sub_resource type="CircleShape2D" id="CircleShape2D_vinjv"]
+radius = 7.5
 
 [node name="Projectile" type="CharacterBody2D" node_paths=PackedStringArray("killzone_component", "ttl_timer")]
 script = ExtResource("1_x1y5w")
@@ -13,14 +13,15 @@ killzone_component = NodePath("KillzoneComponent")
 ttl_timer = NodePath("TimeToLive")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_0slhf")
+shape = SubResource("CircleShape2D_vinjv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.34375, 1)
-texture = ExtResource("2_6qqfi")
+scale = Vector2(0.191966, 0.189213)
+texture = ExtResource("2_18ocw")
 
 [node name="KillzoneComponent" parent="." instance=ExtResource("3_x3rua")]
 

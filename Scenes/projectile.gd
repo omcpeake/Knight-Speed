@@ -5,17 +5,19 @@ extends CharacterBody2D
 @export var killzone_component: KillzoneComponent
 @export var ttl_timer: Timer
 @export_subgroup("Settings")
-@export var speed: float = 200
+@export var speed: float = 300
 @export var damage: float = 5
-@export var time_to_live: float = 10
+@export var time_to_live: float = 4
 
 var direction: float
 var spawn_pos: Vector2
 var spawn_rot: float
+var zdex: int
 
 func _ready():
 	global_position = spawn_pos
 	global_rotation = spawn_rot
+	z_index = zdex
 	ttl_timer.start(time_to_live)
 	
 func _physics_process(delta):
@@ -25,9 +27,10 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	if body is Player:
 		killzone_component.damage_unit(body, damage)
-		queue_free()
+	queue_free()
 
 
 func _on_time_to_live_timeout():
 	#destroy projectile after lifetime ends
 	queue_free()
+
