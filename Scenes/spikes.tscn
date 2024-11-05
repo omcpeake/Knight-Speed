@@ -1,26 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdm2aw7ubeuxs"]
+[gd_scene load_steps=2 format=3 uid="uid://dcs02ud4vxoxi"]
 
-[ext_resource type="Script" path="res://Scenes/spike.gd" id="1_4uav4"]
-[ext_resource type="Texture2D" uid="uid://bdkimf8exhr1v" path="res://Assets/spike1.png" id="2_2blg3"]
-[ext_resource type="Script" path="res://Scenes/components/killzone_component.gd" id="3_5kh50"]
+[ext_resource type="PackedScene" uid="uid://bdm2aw7ubeuxs" path="res://Scenes/spike.tscn" id="1_l671k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iuyt3"]
-size = Vector2(14, 10)
+[node name="Spikes" type="Node2D"]
 
-[node name="Spike" type="Area2D" node_paths=PackedStringArray("killzone_component")]
-script = ExtResource("1_4uav4")
-killzone_component = NodePath("KillzoneComponent")
+[node name="Spike" parent="." instance=ExtResource("1_l671k")]
+position = Vector2(0.210461, 0)
+scale = Vector2(1.5, 1.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
-shape = SubResource("RectangleShape2D_iuyt3")
+[node name="Spike2" parent="." node_paths=PackedStringArray("killzone_component") instance=ExtResource("1_l671k")]
+position = Vector2(-7.92739, 0)
+scale = Vector2(1.5, 1.5)
+killzone_component = NodePath("../Spike/KillzoneComponent")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.19209e-07, -6)
-scale = Vector2(0.44, 0.400001)
-texture = ExtResource("2_2blg3")
-
-[node name="KillzoneComponent" type="Node" parent="."]
-script = ExtResource("3_5kh50")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Spike3" parent="." node_paths=PackedStringArray("killzone_component") instance=ExtResource("1_l671k")]
+position = Vector2(8.83939, 0)
+scale = Vector2(1.5, 1.5)
+killzone_component = NodePath("../Spike/KillzoneComponent")

@@ -788,6 +788,6 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("12_sqsdj")
 
 [node name="LevelEnd" parent="." instance=ExtResource("13_w67ks")]
-modulate = Color(0.0392157, 1, 0.0901961, 1)
+modulate = Color(0.388235, 0.729412, 0.905882, 1)
 position = Vector2(6815, -99)
 level_to_load = 3

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cpgg1tgmt042r" path="res://Scenes/player.tscn" id="1_myysj"]
 [ext_resource type="Texture2D" uid="uid://dnpg6gblmiom" path="res://Assets/Swamp/Terrain_and_Props.png" id="2_5nqc2"]
 [ext_resource type="Texture2D" uid="uid://bxch37xxof07l" path="res://Assets/fantasycave/background1.png" id="2_v53x1"]
-[ext_resource type="PackedScene" uid="uid://bdm2aw7ubeuxs" path="res://Scenes/spikes.tscn" id="3_5te7a"]
+[ext_resource type="PackedScene" uid="uid://bdm2aw7ubeuxs" path="res://Scenes/spike.tscn" id="3_5te7a"]
 [ext_resource type="Texture2D" uid="uid://dyvnmym32orif" path="res://Assets/fantasycave/background3.png" id="4_nwpda"]
 [ext_resource type="Texture2D" uid="uid://sv0nfsmtdcu" path="res://Assets/fantasycave/background4b.png" id="4_t4mv4"]
 [ext_resource type="PackedScene" uid="uid://deqkwfyl3jov7" path="res://Scenes/checkpoint.tscn" id="4_y6670"]
