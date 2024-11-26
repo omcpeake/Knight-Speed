@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://cpgg1tgmt042r"]
+[gd_scene load_steps=63 format=3 uid="uid://cpgg1tgmt042r"]
 
 [ext_resource type="Texture2D" uid="uid://58o5fttc8ijb" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Idle.png" id="1_5riow"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_n52db"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bhx7daj7b64nm" path="res://Scenes/components/wall_jump_component.tscn" id="14_vo8fn"]
 [ext_resource type="PackedScene" uid="uid://dpkkbxhmu6ilf" path="res://Scenes/components/slide_component.tscn" id="15_0mxp2"]
 [ext_resource type="PackedScene" uid="uid://k40fwd340pol" path="res://Scenes/components/health_component.tscn" id="16_igopq"]
+[ext_resource type="Shader" path="res://shaders/pixelate.gdshader" id="17_72r2k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24p70"]
 atlas = ExtResource("2_g1kn6")
@@ -349,7 +350,11 @@ height = 35.999
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4lfo"]
 size = Vector2(10.6874, 20.3716)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "wall_jump_component", "slide_component", "health_component")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxprx"]
+shader = ExtResource("17_72r2k")
+shader_parameter/pixel_size = 0.001
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "wall_jump_component", "slide_component", "health_component", "pixelation")]
 z_index = 5
 floor_snap_length = 10.0
 script = ExtResource("1_n52db")
@@ -361,6 +366,7 @@ jump_component = NodePath("JumpComponent")
 wall_jump_component = NodePath("WallJumpComponent")
 slide_component = NodePath("SlideComponent")
 health_component = NodePath("HealthComponent")
+pixelation = NodePath("CanvasLayer/pixelation")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -20)
@@ -399,3 +405,18 @@ position = Vector2(3, -23)
 [node name="HealthComponent" parent="." instance=ExtResource("16_igopq")]
 max_hp = 5.0
 can_respawn = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="pixelation" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_lxprx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -191.0
+offset_top = -187.0
+offset_right = 129.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2

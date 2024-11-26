@@ -10,6 +10,11 @@ extends CharacterBody2D
 @export var wall_jump_component: WallJumpComponent
 @export var slide_component: SlideComponent
 @export var health_component: HealthComponent
+@export var pixelation: ColorRect
+var pixel_size: float = 0.001
+var pixel_size_delta = 0.08
+var pixelation_completed:bool = true
+var flip:int = 1
 
 @onready var standing_collision = $StandingCollision
 @onready var crouching_collision = $CrouchingCollision
@@ -19,8 +24,7 @@ var movement_enabled : bool = true
 
 
 
-func _physics_process(delta):	
-	
+func _physics_process(delta):		
 	gravity_component.handle_gravity(self, delta)
 	if(movement_enabled):
 		#ground
@@ -35,12 +39,15 @@ func _physics_process(delta):
 		jump_component.handle_jump(self, input_component.get_jump_input(), input_component.get_jump_input_released())
 		wall_jump_component.handle_wall_jump(self, input_component.input_horizontal, gravity_component.is_wall_sliding, input_component.get_jump_input())
 		animation_component.handle_jump_animation(jump_component.is_going_up, gravity_component.is_falling, gravity_component.is_wall_sliding)
-		
+		pixelate(delta)
 		check_if_alive()
 	
+	
+	
+	
+	
 	if health_component.is_dead:
-		respawn()
-		
+		respawn(delta)
 	
 	move_and_slide()
 
@@ -60,8 +67,9 @@ func check_if_alive():
 	else:
 		movement_enabled = true
 
-func respawn():
+func respawn(delta:float):
 	if health_component.respawn_ready:
+		pixelation_completed=false
 		health_component.respawn()
 		position = spawn_point
 		check_if_alive()
@@ -69,3 +77,19 @@ func respawn():
 func update_spawn_point(new_spawn_point : Vector2):
 	spawn_point = new_spawn_point
 	print("spawn point updated")
+	
+func pixelate(delta:float) -> void:
+	if(pixelation_completed == false):
+		if (pixel_size <= 0.001):
+			flip = 1
+			
+		elif (pixel_size >= 0.02):
+			flip = -1
+			
+		pixel_size += delta * pixel_size_delta * flip
+		print(pixel_size)
+		pixelation.get_material().set_shader_parameter("pixel_size", pixel_size)
+		
+		if (pixel_size <= 0.001):
+			pixelation_completed = true
+

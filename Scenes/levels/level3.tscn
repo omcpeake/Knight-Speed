@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1bchrilvtj4i"]
+[gd_scene load_steps=12 format=3 uid="uid://d1bchrilvtj4i"]
 
 [ext_resource type="PackedScene" uid="uid://cpgg1tgmt042r" path="res://Scenes/player.tscn" id="1_7ig05"]
 [ext_resource type="Texture2D" uid="uid://d4cqcm2662qi2" path="res://Assets/night.png" id="2_k4kiw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://deqkwfyl3jov7" path="res://Scenes/checkpoint.tscn" id="5_ddica"]
 [ext_resource type="PackedScene" uid="uid://dnlrffuyi48sv" path="res://Scenes/GameEnd.tscn" id="6_gp3ow"]
 [ext_resource type="PackedScene" uid="uid://bpmer5wsklvlx" path="res://Scenes/torch.tscn" id="8_bttn2"]
+[ext_resource type="PackedScene" uid="uid://bdm2aw7ubeuxs" path="res://Scenes/spike.tscn" id="9_ycu2l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y4oal"]
 texture = ExtResource("2_qr11n")
@@ -2105,12 +2106,15 @@ texture = ExtResource("2_qr11n")
 10:46/0 = 0
 10:46/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:46/0/physics_layer_0/angular_velocity = 0.0
+10:46/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:46/0 = 0
 11:46/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 11:46/0/physics_layer_0/angular_velocity = 0.0
+11:46/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:46/0 = 0
 12:46/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 12:46/0/physics_layer_0/angular_velocity = 0.0
+12:46/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:47/0 = 0
 4:47/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:47/0/physics_layer_0/angular_velocity = 0.0
@@ -2230,7 +2234,7 @@ sources/1 = SubResource("TileSetAtlasSource_y4oal")
 [node name="Level3" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_7ig05")]
-position = Vector2(717, -1255)
+position = Vector2(-44, -40)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, -58)
@@ -2439,29 +2443,34 @@ position = Vector2(1579, -1214)
 [node name="GameEnd" parent="." instance=ExtResource("6_gp3ow")]
 position = Vector2(1709, -1823)
 
-[node name="Torch" parent="." instance=ExtResource("8_bttn2")]
+[node name="Torches" type="Node2D" parent="."]
+
+[node name="Torch" parent="Torches" instance=ExtResource("8_bttn2")]
 position = Vector2(348, -1275)
 
-[node name="Node2D" parent="." instance=ExtResource("8_bttn2")]
+[node name="Torch9" parent="Torches" instance=ExtResource("8_bttn2")]
 position = Vector2(456, -95)
 
-[node name="Node2D2" parent="." instance=ExtResource("8_bttn2")]
+[node name="Torch8" parent="Torches" instance=ExtResource("8_bttn2")]
 position = Vector2(520, -326)
 
-[node name="Node2D3" parent="." instance=ExtResource("8_bttn2")]
+[node name="Torch3" parent="Torches" instance=ExtResource("8_bttn2")]
 position = Vector2(942, -730)
 
-[node name="Node2D4" parent="." instance=ExtResource("8_bttn2")]
+[node name="Torch4" parent="Torches" instance=ExtResource("8_bttn2")]
 position = Vector2(1246, -581)
 
-[node name="Node2D5" parent="." instance=ExtResource("8_bttn2")]
+[node name="Torch5" parent="Torches" instance=ExtResource("8_bttn2")]
 position = Vector2(1373, -678)
 
-[node name="Node2D6" parent="." instance=ExtResource("8_bttn2")]
+[node name="Torch6" parent="Torches" instance=ExtResource("8_bttn2")]
 position = Vector2(2052, -1167)
 
-[node name="Node2D7" parent="." instance=ExtResource("8_bttn2")]
+[node name="Torch7" parent="Torches" instance=ExtResource("8_bttn2")]
 position = Vector2(1513, -1268)
 
-[node name="Torch2" parent="." instance=ExtResource("8_bttn2")]
+[node name="Torch2" parent="Torches" instance=ExtResource("8_bttn2")]
 position = Vector2(851, -1280)
+
+[node name="Spike" parent="." instance=ExtResource("9_ycu2l")]
+position = Vector2(31, -2)
