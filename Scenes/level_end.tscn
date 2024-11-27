@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6ko3ldmklk1c"]
+[gd_scene load_steps=5 format=3 uid="uid://c6ko3ldmklk1c"]
 
 [ext_resource type="Script" path="res://Scenes/level_end.gd" id="1_pbxo7"]
+[ext_resource type="PackedScene" uid="uid://c0g34lrf6y3sr" path="res://Scenes/UI/level_completed_menu.tscn" id="2_2kguc"]
 [ext_resource type="Texture2D" uid="uid://dio4dvvfwphjp" path="res://Assets/parallaxcave/8fx.png" id="2_e8edy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k42ub"]
@@ -8,6 +9,7 @@ size = Vector2(124, 70)
 
 [node name="LevelEnd" type="Area2D"]
 script = ExtResource("1_pbxo7")
+menu = ExtResource("2_2kguc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, -36)
