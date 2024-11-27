@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dd1umhxft0pc1"]
+[gd_scene load_steps=14 format=3 uid="uid://dd1umhxft0pc1"]
 
 [ext_resource type="PackedScene" uid="uid://cpgg1tgmt042r" path="res://Scenes/player.tscn" id="1_myysj"]
 [ext_resource type="Texture2D" uid="uid://dnpg6gblmiom" path="res://Assets/Swamp/Terrain_and_Props.png" id="2_5nqc2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://sv0nfsmtdcu" path="res://Assets/fantasycave/background4b.png" id="4_t4mv4"]
 [ext_resource type="PackedScene" uid="uid://deqkwfyl3jov7" path="res://Scenes/checkpoint.tscn" id="4_y6670"]
 [ext_resource type="PackedScene" uid="uid://d1kckgf0e3xnm" path="res://Scenes/deathplane.tscn" id="5_2ju2r"]
+[ext_resource type="PackedScene" uid="uid://dcs02ud4vxoxi" path="res://Scenes/spikes.tscn" id="6_n2xhy"]
 [ext_resource type="PackedScene" uid="uid://c6ko3ldmklk1c" path="res://Scenes/level_end.tscn" id="9_rr1bu"]
 [ext_resource type="Texture2D" uid="uid://bejac5cxvoydp" path="res://Assets/Tree_1_256b.png" id="10_xingo"]
 
@@ -1338,33 +1339,64 @@ centered = false
 
 [node name="Traps" type="Node" parent="."]
 
-[node name="Spike" parent="Traps" instance=ExtResource("3_5te7a")]
-position = Vector2(194, 12)
-scale = Vector2(18.8, 1)
+[node name="FirstPit" type="Node2D" parent="Traps"]
 
-[node name="Spike2" parent="Traps" node_paths=PackedStringArray("killzone_component") instance=ExtResource("3_5te7a")]
-position = Vector2(642, -67)
-scale = Vector2(28.4081, 1)
-killzone_component = NodePath("../Spike/KillzoneComponent")
+[node name="Spikes" parent="Traps/FirstPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(91, 13)
 
-[node name="Spike3" parent="Traps" instance=ExtResource("3_5te7a")]
-position = Vector2(3402, -174)
-rotation = -1.56781
+[node name="Spikes2" parent="Traps/FirstPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(116, 13)
 
-[node name="Spike4" parent="Traps" node_paths=PackedStringArray("killzone_component") instance=ExtResource("3_5te7a")]
-position = Vector2(3401, -160)
-rotation = -1.56781
-killzone_component = NodePath("../Spike3/KillzoneComponent")
+[node name="Spikes3" parent="Traps/FirstPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(141, 13)
 
-[node name="Spike5" parent="Traps" instance=ExtResource("3_5te7a")]
-position = Vector2(4152, -183)
+[node name="Spikes4" parent="Traps/FirstPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(166, 13)
+
+[node name="Spikes5" parent="Traps/FirstPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(190, 13)
+
+[node name="Spikes6" parent="Traps/FirstPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(215, 13)
+
+[node name="Spikes7" parent="Traps/FirstPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(239, 13)
+
+[node name="Spikes8" parent="Traps/FirstPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(264, 13)
+
+[node name="Spikes9" parent="Traps/FirstPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(287, 13)
+
+[node name="Spikes10" parent="Traps/FirstPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(312, 13)
+
+[node name="SecondPit" type="Node2D" parent="Traps"]
+position = Vector2(639, -103)
+
+[node name="Spikes" parent="Traps/SecondPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(-39, 36)
+
+[node name="Spikes2" parent="Traps/SecondPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(-14, 36)
+
+[node name="Spikes3" parent="Traps/SecondPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(11, 36)
+
+[node name="Spikes4" parent="Traps/SecondPit" instance=ExtResource("6_n2xhy")]
+position = Vector2(35, 36)
+
+[node name="Spikes" parent="Traps" instance=ExtResource("6_n2xhy")]
+position = Vector2(3403, -134)
 rotation = -1.5708
-scale = Vector2(2.56092, 1)
+
+[node name="Spikes2" parent="Traps" instance=ExtResource("6_n2xhy")]
+position = Vector2(4152, -113)
+rotation = -1.5708
 
 [node name="Spike6" parent="Traps" instance=ExtResource("3_5te7a")]
 position = Vector2(4587, -145)
 rotation = 3.14159
-scale = Vector2(0.559922, 1)
 
 [node name="Checkpoints" type="Node" parent="."]
 
