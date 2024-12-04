@@ -4,7 +4,7 @@ extends Node
 @export_subgroup("Settings")
 @export var speed: float = 250
 @export var ground_accel_speed: float = 40
-@export var ground_decel_speed: float = 20
+@export var ground_decel_speed: float = 30
 @export var slide_accel_speed: float = 20
 @export var slide_decel_speed: float = 2.5
 @export var air_accel_speed: float = 20

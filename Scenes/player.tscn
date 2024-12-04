@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://cpgg1tgmt042r"]
+[gd_scene load_steps=65 format=3 uid="uid://cpgg1tgmt042r"]
 
 [ext_resource type="Texture2D" uid="uid://58o5fttc8ijb" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Idle.png" id="1_5riow"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_n52db"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cjhe4o3xlgesq" path="res://Scenes/components/animation_component.tscn" id="9_p1yu8"]
 [ext_resource type="PackedScene" uid="uid://cfri8kd8qq3fk" path="res://Scenes/components/gravity_component.tscn" id="9_qm0m2"]
 [ext_resource type="PackedScene" uid="uid://cxofpkd6adspv" path="res://Scenes/components/input_component.tscn" id="10_7vrsc"]
+[ext_resource type="PackedScene" uid="uid://dp0ys2nhadjgf" path="res://Scenes/UI/hud.tscn" id="10_sl6sg"]
+[ext_resource type="PackedScene" uid="uid://dqgkh7v4km17u" path="res://Scenes/GameTimer.tscn" id="11_u51fx"]
 [ext_resource type="PackedScene" uid="uid://br777x3qmu27c" path="res://Scenes/components/movement_component.tscn" id="11_vlomr"]
 [ext_resource type="PackedScene" uid="uid://cdeb746m3nacb" path="res://Scenes/components/jump_component.tscn" id="13_flvqh"]
 [ext_resource type="PackedScene" uid="uid://bhx7daj7b64nm" path="res://Scenes/components/wall_jump_component.tscn" id="14_vo8fn"]
@@ -343,16 +345,16 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxprx"]
+shader = ExtResource("17_72r2k")
+shader_parameter/pixel_size = 0.001
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yb28k"]
 radius = 3.0
 height = 35.999
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4lfo"]
 size = Vector2(10.6874, 20.3716)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxprx"]
-shader = ExtResource("17_72r2k")
-shader_parameter/pixel_size = 0.001
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "wall_jump_component", "slide_component", "health_component", "pixelation")]
 z_index = 5
@@ -373,6 +375,25 @@ position = Vector2(3, -20)
 sprite_frames = SubResource("SpriteFrames_npepe")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="pixelation" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_lxprx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -191.0
+offset_top = -187.0
+offset_right = 129.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("10_sl6sg")]
+
+[node name="GameTimer" parent="." instance=ExtResource("11_u51fx")]
 
 [node name="StandingCollision" type="CollisionShape2D" parent="."]
 position = Vector2(3, -19)
@@ -405,18 +426,3 @@ position = Vector2(3, -23)
 [node name="HealthComponent" parent="." instance=ExtResource("16_igopq")]
 max_hp = 5.0
 can_respawn = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 3
-
-[node name="pixelation" type="ColorRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_lxprx")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -191.0
-offset_top = -187.0
-offset_right = 129.0
-offset_bottom = -7.0
-grow_horizontal = 2
-grow_vertical = 2

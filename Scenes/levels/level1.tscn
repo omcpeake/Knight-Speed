@@ -1275,7 +1275,7 @@ sources/0 = SubResource("TileSetAtlasSource_yinux")
 [node name="Level1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_myysj")]
-position = Vector2(4733, -105)
+position = Vector2(-241, -77)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, -58)
