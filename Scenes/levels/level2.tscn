@@ -626,7 +626,7 @@ sources/1 = SubResource("TileSetAtlasSource_uu81q")
 [node name="Level2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_4obxc")]
-position = Vector2(38, -26)
+position = Vector2(5010, -94)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(2, -49)
@@ -760,12 +760,12 @@ fire_delay = 4.0
 [node name="ProjectileShooter7" parent="Traps" instance=ExtResource("11_bfrde")]
 position = Vector2(5608, -163)
 rotation = -1.5708
-fire_delay = 2.0
+fire_delay = 2.5
 
 [node name="ProjectileShooter8" parent="Traps" instance=ExtResource("11_bfrde")]
 position = Vector2(5530, -263)
 rotation = 1.60575
-fire_delay = 1.0
+fire_delay = 1.2
 
 [node name="DangerSign" type="Sprite2D" parent="."]
 position = Vector2(1830, -153)

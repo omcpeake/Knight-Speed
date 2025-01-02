@@ -1,16 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cecnh4vwgvote"]
+[gd_scene load_steps=6 format=3 uid="uid://cecnh4vwgvote"]
 
 [ext_resource type="Script" path="res://Scenes/projectile.gd" id="1_x1y5w"]
 [ext_resource type="Texture2D" uid="uid://3fxbamvqcvtr" path="res://Assets/fireball1.png" id="2_18ocw"]
 [ext_resource type="PackedScene" uid="uid://xvpy6tqw0myo" path="res://Scenes/components/killzone_component.tscn" id="3_x3rua"]
+[ext_resource type="AudioStream" uid="uid://c17ry0itj2qoi" path="res://Assets/Audio/explosion-47163.mp3" id="4_cg3ly"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vinjv"]
 radius = 7.5
 
-[node name="Projectile" type="CharacterBody2D" node_paths=PackedStringArray("killzone_component", "ttl_timer")]
+[node name="Projectile" type="CharacterBody2D" node_paths=PackedStringArray("killzone_component", "ttl_timer", "CollisionSound")]
 script = ExtResource("1_x1y5w")
 killzone_component = NodePath("KillzoneComponent")
 ttl_timer = NodePath("TimeToLive")
+CollisionSound = NodePath("CollisionSound")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 3
@@ -28,6 +30,11 @@ texture = ExtResource("2_18ocw")
 [node name="TimeToLive" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="CollisionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cg3ly")
+volume_db = -10.0
+max_distance = 600.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="TimeToLive" to="." method="_on_time_to_live_timeout"]

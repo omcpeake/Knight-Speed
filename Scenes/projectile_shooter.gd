@@ -3,6 +3,7 @@ extends Node2D
 @export_subgroup("Nodes")
 @export var projectile: PackedScene
 @export var fire_timer: Timer
+@export var fire_audio: AudioStreamPlayer2D
 @export_subgroup("Settings")
 @export var fire_delay: float = 5
 
@@ -22,6 +23,7 @@ func fire_projectile() -> void:
 		instance.spawn_rot = rotation
 		instance.z_index = z_index -1
 		get_tree().current_scene.add_child(instance)
+	fire_audio.play()
 	
 
 func _on_timer_timeout():
