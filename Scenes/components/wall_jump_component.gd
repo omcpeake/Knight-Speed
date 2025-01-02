@@ -8,14 +8,16 @@ extends Node
 @export var wall_jump_horizontal_velocity: float = 400
 
 
-func handle_wall_jump(body: CharacterBody2D, direction: float, is_wall_sliding: bool, want_to_jump: bool) -> void:
+func handle_wall_jump(body: CharacterBody2D, direction: float, is_wall_sliding: bool, want_to_jump: bool, wall_jump_audio: AudioStreamPlayer) -> void:
 	if want_to_jump and is_wall_sliding:
 		body.velocity.y = wall_jump_vertical_velocity
 		body.velocity.x = wall_jump_horizontal_velocity * (direction * -1)
+		wall_jump_audio.play()
 		
 
 
 func wall_jump(body: CharacterBody2D, direction: float) -> void:
 	body.velocity.y = wall_jump_vertical_velocity
 	body.velocity.x = wall_jump_horizontal_velocity * (direction * -1)
+	
 	

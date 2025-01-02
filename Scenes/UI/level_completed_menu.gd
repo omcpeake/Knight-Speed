@@ -1,5 +1,7 @@
 extends CanvasLayer
 class_name LevelCompletedMenu
+
+@export var gametimer_label : Label
 @export var default_button : Button
 
 var NextLevelName: String
@@ -8,8 +10,8 @@ var NextLevelName: String
 func _ready():
 	default_button.grab_focus()
 
-
 func SetNextLevelName(NewName:String) -> void:
+	gametimer_label.text = GlobalGameTimer.time_to_string()
 	NextLevelName = NewName
 
 

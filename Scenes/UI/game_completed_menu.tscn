@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpo3s2ewsfrj2"]
+[gd_scene load_steps=4 format=3 uid="uid://b4rpninkhyawh"]
 
-[ext_resource type="Script" path="res://Scenes/UI/level_completed_menu.gd" id="1_vp5o2"]
+[ext_resource type="Script" path="res://Scenes/UI/game_completed_menu.gd" id="1_8xkwg"]
 
 [sub_resource type="SystemFont" id="SystemFont_j87ba"]
 font_names = PackedStringArray("Impact")
@@ -8,10 +8,12 @@ font_names = PackedStringArray("Impact")
 [sub_resource type="SystemFont" id="SystemFont_857ch"]
 font_names = PackedStringArray("Impact")
 
-[node name="GameCompletedMenu" type="CanvasLayer" node_paths=PackedStringArray("default_button")]
+[node name="GameCompletedMenu" type="CanvasLayer" node_paths=PackedStringArray("gametimer_label", "total_gametimer_label", "default_button")]
 layer = 20
-script = ExtResource("1_vp5o2")
-default_button = NodePath("MarginContainer/VBoxContainer/NextLevelButton")
+script = ExtResource("1_8xkwg")
+gametimer_label = NodePath("MarginContainer/VBoxContainer/GameTimeLabel")
+total_gametimer_label = NodePath("MarginContainer/VBoxContainer/TotalGameTimeLabel")
+default_button = NodePath("MarginContainer/VBoxContainer/ReturnToMenuButton")
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -30,9 +32,9 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 50
+theme_override_constants/separation = 30
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="GameCompletedLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
@@ -40,11 +42,28 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = SubResource("SystemFont_j87ba")
 theme_override_font_sizes/font_size = 64
-text = "Level Completed"
+text = "The End..?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NextLevelButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="GameTimeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "00:00:000"
+
+[node name="TotalTimeHeaderLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Total Time"
+
+[node name="TotalGameTimeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "00:00:000"
+
+[node name="ReturnToMenuButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -53,7 +72,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = SubResource("SystemFont_857ch")
 theme_override_font_sizes/font_size = 32
-text = "Return to Menu
-"
+text = "Return To Menu"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]

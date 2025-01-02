@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2llx65hrhkdq"]
+[gd_scene load_steps=5 format=3 uid="uid://b2llx65hrhkdq"]
 
 [ext_resource type="Script" path="res://Scenes/UI/menu.gd" id="1_4whq7"]
-[ext_resource type="Texture2D" uid="uid://b2uqs7xsostj8" path="res://Assets/blackgraybg.png" id="2_jkv4n"]
+[ext_resource type="Texture2D" uid="uid://bvcl6hcmndnun" path="res://Assets/speedoknight.png" id="2_lenxv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n72py"]
-texture = ExtResource("2_jkv4n")
+texture = ExtResource("2_lenxv")
+
+[sub_resource type="SystemFont" id="SystemFont_mvtk5"]
+font_names = PackedStringArray("Impact")
 
 [node name="Menu" type="Control" node_paths=PackedStringArray("default_button")]
 layout_mode = 3
@@ -40,23 +43,25 @@ grow_vertical = 0
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../QuitButton")
-focus_neighbor_bottom = NodePath("../OptionsButton")
 text = "Start"
-
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-focus_neighbor_top = NodePath("../StartButton")
-focus_neighbor_bottom = NodePath("../QuitButton")
-text = "Options"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../StartButton")
 text = "Quit"
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 13.0
+offset_top = 19.0
+offset_right = 654.0
+offset_bottom = 142.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = SubResource("SystemFont_mvtk5")
+theme_override_font_sizes/font_size = 100
+text = "Speed of Knight"
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

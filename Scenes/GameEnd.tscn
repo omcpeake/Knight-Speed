@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnlrffuyi48sv"]
+[gd_scene load_steps=6 format=3 uid="uid://dnlrffuyi48sv"]
 
 [ext_resource type="Script" path="res://Scenes/GameEnd.gd" id="1_cm8sv"]
+[ext_resource type="PackedScene" uid="uid://b4rpninkhyawh" path="res://Scenes/UI/game_completed_menu.tscn" id="2_8mxb5"]
 [ext_resource type="Texture2D" uid="uid://dj3lrdyf0ur2h" path="res://Assets/throne1.png" id="2_21vf7"]
 [ext_resource type="Texture2D" uid="uid://dio4dvvfwphjp" path="res://Assets/parallaxcave/8fx.png" id="3_odgmu"]
 
@@ -9,6 +10,7 @@ size = Vector2(36, 30)
 
 [node name="GameEnd" type="Area2D"]
 script = ExtResource("1_cm8sv")
+menu = ExtResource("2_8mxb5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -15)

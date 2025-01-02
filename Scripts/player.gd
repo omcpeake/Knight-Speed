@@ -10,11 +10,18 @@ extends CharacterBody2D
 @export var wall_jump_component: WallJumpComponent
 @export var slide_component: SlideComponent
 @export var health_component: HealthComponent
+
 @export var pixelation: ColorRect
 var pixel_size: float = 0.001
 var pixel_size_delta = 0.08
 var pixelation_completed:bool = true
 var flip:int = 1
+
+@export_subgroup("Audio")
+@export var jump_audio: AudioStreamPlayer
+@export var air_jump_audio: AudioStreamPlayer
+@export var land_audio: AudioStreamPlayer
+@export var walk_audio: AudioStreamPlayer
 
 @onready var standing_collision = $StandingCollision
 @onready var crouching_collision = $CrouchingCollision
@@ -23,6 +30,9 @@ var spawn_point : Vector2
 var movement_enabled : bool = true
 
 
+func _ready():
+	GlobalGameTimer.reset()
+	GlobalGameTimer.stopped = false
 
 func _physics_process(delta):		
 	gravity_component.handle_gravity(self, delta)
@@ -36,14 +46,11 @@ func _physics_process(delta):
 		animation_component.handle_slide_animation(slide_component.is_sliding)
 
 		#air
-		jump_component.handle_jump(self, input_component.get_jump_input(), input_component.get_jump_input_released())
-		wall_jump_component.handle_wall_jump(self, input_component.input_horizontal, gravity_component.is_wall_sliding, input_component.get_jump_input())
+		jump_component.handle_jump(self, input_component.get_jump_input(), input_component.get_jump_input_released(), jump_audio, land_audio)
+		wall_jump_component.handle_wall_jump(self, input_component.input_horizontal, gravity_component.is_wall_sliding, input_component.get_jump_input(), jump_audio)
 		animation_component.handle_jump_animation(jump_component.is_going_up, gravity_component.is_falling, gravity_component.is_wall_sliding)
 		pixelate(delta)
 		check_if_alive()
-	
-	
-	
 	
 	
 	if health_component.is_dead:
@@ -76,7 +83,6 @@ func respawn(delta:float):
 	
 func update_spawn_point(new_spawn_point : Vector2):
 	spawn_point = new_spawn_point
-	print("spawn point updated")
 	
 func pixelate(delta:float) -> void:
 	if(pixelation_completed == false):
@@ -87,7 +93,6 @@ func pixelate(delta:float) -> void:
 			flip = -1
 			
 		pixel_size += delta * pixel_size_delta * flip
-		print(pixel_size)
 		pixelation.get_material().set_shader_parameter("pixel_size", pixel_size)
 		
 		if (pixel_size <= 0.001):

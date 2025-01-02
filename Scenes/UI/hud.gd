@@ -3,14 +3,16 @@ class_name HUD
 
 @export var gametimer_label : Label
 
-var gametimer : GameTimer
+#using global variable instead
+#var gametimer : GameTimer
 
 func _ready():
-	gametimer = get_tree().get_first_node_in_group("gametimer")
+	#gametimer = get_tree().get_first_node_in_group("gametimer")
+	pass
 
 
 func _process(delta):
 	update_gametimer_label()
 
 func update_gametimer_label():
-	gametimer_label.text = gametimer.time_to_string()
+	gametimer_label.text = GlobalGameTimer.time_to_string()

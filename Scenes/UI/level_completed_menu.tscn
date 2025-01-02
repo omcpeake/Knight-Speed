@@ -8,9 +8,10 @@ font_names = PackedStringArray("Impact")
 [sub_resource type="SystemFont" id="SystemFont_857ch"]
 font_names = PackedStringArray("Impact")
 
-[node name="LevelCompletedMenu" type="CanvasLayer" node_paths=PackedStringArray("default_button")]
+[node name="LevelCompletedMenu" type="CanvasLayer" node_paths=PackedStringArray("gametimer_label", "default_button")]
 layer = 20
 script = ExtResource("1_6vvpo")
+gametimer_label = NodePath("MarginContainer/VBoxContainer/TimeLabel")
 default_button = NodePath("MarginContainer/VBoxContainer/NextLevelButton")
 metadata/_edit_use_anchors_ = true
 
@@ -32,7 +33,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 50
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LevelCompletedLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
@@ -43,6 +44,12 @@ theme_override_font_sizes/font_size = 64
 text = "Level Completed"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "00:00:000"
 
 [node name="NextLevelButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(20, 0)

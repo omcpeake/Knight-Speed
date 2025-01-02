@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://cpgg1tgmt042r"]
+[gd_scene load_steps=66 format=3 uid="uid://cpgg1tgmt042r"]
 
 [ext_resource type="Texture2D" uid="uid://58o5fttc8ijb" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Idle.png" id="1_5riow"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_n52db"]
@@ -12,13 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://cfri8kd8qq3fk" path="res://Scenes/components/gravity_component.tscn" id="9_qm0m2"]
 [ext_resource type="PackedScene" uid="uid://cxofpkd6adspv" path="res://Scenes/components/input_component.tscn" id="10_7vrsc"]
 [ext_resource type="PackedScene" uid="uid://dp0ys2nhadjgf" path="res://Scenes/UI/hud.tscn" id="10_sl6sg"]
-[ext_resource type="PackedScene" uid="uid://dqgkh7v4km17u" path="res://Scenes/GameTimer.tscn" id="11_u51fx"]
 [ext_resource type="PackedScene" uid="uid://br777x3qmu27c" path="res://Scenes/components/movement_component.tscn" id="11_vlomr"]
 [ext_resource type="PackedScene" uid="uid://cdeb746m3nacb" path="res://Scenes/components/jump_component.tscn" id="13_flvqh"]
 [ext_resource type="PackedScene" uid="uid://bhx7daj7b64nm" path="res://Scenes/components/wall_jump_component.tscn" id="14_vo8fn"]
 [ext_resource type="PackedScene" uid="uid://dpkkbxhmu6ilf" path="res://Scenes/components/slide_component.tscn" id="15_0mxp2"]
 [ext_resource type="PackedScene" uid="uid://k40fwd340pol" path="res://Scenes/components/health_component.tscn" id="16_igopq"]
 [ext_resource type="Shader" path="res://shaders/pixelate.gdshader" id="17_72r2k"]
+[ext_resource type="AudioStream" uid="uid://c7sl66hkeic5f" path="res://Assets/Audio/playersounds/boing-6222.mp3" id="19_wqo8a"]
+[ext_resource type="AudioStream" uid="uid://7cafe5o3sier" path="res://Assets/Audio/playersounds/jump-land-01.mp3" id="20_fyw26"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24p70"]
 atlas = ExtResource("2_g1kn6")
@@ -356,7 +357,7 @@ height = 35.999
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4lfo"]
 size = Vector2(10.6874, 20.3716)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "wall_jump_component", "slide_component", "health_component", "pixelation")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "wall_jump_component", "slide_component", "health_component", "pixelation", "jump_audio", "land_audio")]
 z_index = 5
 floor_snap_length = 10.0
 script = ExtResource("1_n52db")
@@ -369,6 +370,8 @@ wall_jump_component = NodePath("WallJumpComponent")
 slide_component = NodePath("SlideComponent")
 health_component = NodePath("HealthComponent")
 pixelation = NodePath("CanvasLayer/pixelation")
+jump_audio = NodePath("AudioStreamPlayer2DJumping")
+land_audio = NodePath("AudioStreamPlayer2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -20)
@@ -392,8 +395,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("10_sl6sg")]
-
-[node name="GameTimer" parent="." instance=ExtResource("11_u51fx")]
 
 [node name="StandingCollision" type="CollisionShape2D" parent="."]
 position = Vector2(3, -19)
@@ -426,3 +427,12 @@ position = Vector2(3, -23)
 [node name="HealthComponent" parent="." instance=ExtResource("16_igopq")]
 max_hp = 5.0
 can_respawn = true
+
+[node name="AudioStreamPlayer2DJumping" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_wqo8a")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_fyw26")
+bus = &"SFX"
