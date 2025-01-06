@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" path="res://Scenes/components/health_component.gd" id="1_8fs3q"]
 
-[node name="HealthComponent" type="Node" node_paths=PackedStringArray("respawn_timer")]
+[node name="HealthComponent" type="Node" node_paths=PackedStringArray("respawn_timer", "death_audio")]
 script = ExtResource("1_8fs3q")
 respawn_timer = NodePath("RespawnTimer")
+death_audio = NodePath("")
 
 [node name="RespawnTimer" type="Timer" parent="."]
 one_shot = true

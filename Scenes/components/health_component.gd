@@ -11,6 +11,9 @@ var is_dead: bool =  false
 @export var can_respawn: bool = false
 @export var respawn_delay: float = 1
 
+@export_subgroup("Audio")
+@export var death_audio: AudioStreamPlayer
+@export var respawn_audio: AudioStreamPlayer
 var respawn_ready : bool = false
 
 func _ready():
@@ -32,6 +35,7 @@ func kill() -> void:
 func handle_death() ->void:
 	current_hp = 0
 	is_dead = true
+	death_audio.play()
 	if can_respawn:
 		respawn_timer.wait_time = respawn_delay
 		respawn_timer.start()
@@ -40,6 +44,7 @@ func respawn() -> void:
 	respawn_ready = false
 	current_hp = max_hp
 	is_dead = false
+	respawn_audio.play()
 
 func _on_respawn_timer_timeout():
 	respawn_ready = true
