@@ -13,14 +13,12 @@ extends Node
 
 func handle_wall_jump(body: CharacterBody2D, direction: float, is_wall_sliding: bool, want_to_jump: bool) -> void:
 	if want_to_jump and is_wall_sliding:
-		body.velocity.y = wall_jump_vertical_velocity
-		body.velocity.x = wall_jump_horizontal_velocity * (direction * -1)
-		wall_jump_audio.play()
-		
-
+		wall_jump(body,direction)	
 
 func wall_jump(body: CharacterBody2D, direction: float) -> void:
 	body.velocity.y = wall_jump_vertical_velocity
 	body.velocity.x = wall_jump_horizontal_velocity * (direction * -1)
+	wall_jump_audio.pitch_scale = randf_range(0.9,1.1)
+	wall_jump_audio.play()
 	
 	

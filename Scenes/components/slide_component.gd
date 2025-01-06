@@ -13,9 +13,9 @@ var last_frame_sliding: bool = false
 
 func handle_slide(body: CharacterBody2D, want_to_slide: bool) ->void:
 	if body.is_on_floor() and want_to_slide and body.velocity.x != 0:
-		if last_frame_sliding == false:
+		if last_frame_sliding == false:			
 			slide_audio.play()
-			
+		slide_audio.pitch_scale = randf_range(0.9,1.1)	
 		is_sliding = true	
 		last_frame_sliding = true
 	else:

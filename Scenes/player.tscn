@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://cpgg1tgmt042r"]
+[gd_scene load_steps=72 format=3 uid="uid://cpgg1tgmt042r"]
 
 [ext_resource type="Texture2D" uid="uid://58o5fttc8ijb" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Idle.png" id="1_5riow"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_n52db"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://ct664vg3ocv61" path="res://Assets/Audio/playersounds/skid.mp3" id="22_cotok"]
 [ext_resource type="AudioStream" uid="uid://ul406bc7u6d3" path="res://Assets/Audio/playersounds/piano-slam-97095.mp3" id="24_i40a2"]
 [ext_resource type="AudioStream" uid="uid://bgbjprxe54k4w" path="res://Assets/Audio/playersounds/zoom-up-2-slower-delay-107050.mp3" id="25_2h8f8"]
+[ext_resource type="AudioStream" uid="uid://bngglkg5w8vy0" path="res://Assets/Audio/playersounds/armour.mp3" id="26_ock5w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24p70"]
 atlas = ExtResource("2_g1kn6")
@@ -362,7 +363,7 @@ height = 35.999
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4lfo"]
 size = Vector2(10.6874, 20.3716)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "wall_jump_component", "slide_component", "health_component", "pixelation", "jump_audio", "air_jump_audio", "wall_jump_audio", "land_audio", "walk_audio", "wall_slide_audio", "slide_audio")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "wall_jump_component", "slide_component", "health_component", "pixelation", "jump_audio", "air_jump_audio", "wall_jump_audio", "land_audio", "walk_audio", "wall_slide_audio", "slide_audio", "footstep_audio")]
 z_index = 5
 floor_snap_length = 10.0
 script = ExtResource("1_n52db")
@@ -382,12 +383,15 @@ land_audio = NodePath("LandAudio")
 walk_audio = NodePath("WallSlideAudio")
 wall_slide_audio = NodePath("WallSlideAudio")
 slide_audio = NodePath("SlideAudio")
+footstep_audio = NodePath("StepAudio")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -20)
 sprite_frames = SubResource("SpriteFrames_npepe")
-animation = &"idle"
+animation = &"run"
 autoplay = "idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
@@ -468,15 +472,27 @@ bus = &"SFX"
 
 [node name="WallSlideAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_jimpw")
+bus = &"SFX"
 
 [node name="SlideAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_cotok")
 volume_db = -26.243
 pitch_scale = 0.82
+bus = &"SFX"
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_i40a2")
+volume_db = -15.0
+bus = &"SFX"
 
 [node name="RespawnAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("25_2h8f8")
 volume_db = -10.0
+bus = &"SFX"
+
+[node name="StepAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_ock5w")
+volume_db = -15.0
+bus = &"SFX"
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

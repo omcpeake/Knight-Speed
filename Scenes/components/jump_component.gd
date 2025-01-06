@@ -15,6 +15,7 @@ extends Node
 @export var air_jump_audio: AudioStreamPlayer
 @export var land_audio: AudioStreamPlayer
 
+
 var current_air_jump_count: int = air_jump_count
 var is_going_up: bool = false
 var is_jumping: bool = false
@@ -23,15 +24,16 @@ var last_frame_on_floor: bool = false
 func handle_jump(body: CharacterBody2D, want_to_jump:bool, jump_released: bool,) -> void:
 	if has_just_landed(body):
 		is_jumping = false
+		land_audio.pitch_scale = randf_range(0.9,1.1)
 		land_audio.play()
 	
 	if want_to_jump and (body.is_on_floor() or not coyote_time.is_stopped()):
 		#if on ground and press jump then jump
-		jump(body, jump_velocity)
+		jump(body, jump_velocity, jump_audio)
 		
 	elif want_to_jump and not body.is_on_floor() and not body.is_on_wall() and current_air_jump_count > 0:
 		#if in air and have air jumps then air jump and decrement air jump
-		jump(body, air_jump_velocity)
+		jump(body, air_jump_velocity, air_jump_audio)
 		current_air_jump_count -= 1
 		
 	handle_coyote_time(body)
@@ -44,11 +46,11 @@ func handle_jump(body: CharacterBody2D, want_to_jump:bool, jump_released: bool,)
 	#reset air jumps if on ground or wallsliding
 	if body.is_on_floor() or body.is_on_wall(): current_air_jump_count = air_jump_count	
 
-func jump(body: CharacterBody2D, velocity: float,) -> void:
+func jump(body: CharacterBody2D, velocity: float, audio_to_play:AudioStreamPlayer) -> void:
 	body.velocity.y = velocity
 	jump_input_buffer.stop()
 	is_jumping = true
-	jump_audio.play()
+	audio_to_play.play()
 	coyote_time.stop()
 	
 func has_just_landed(body: CharacterBody2D) -> bool:
@@ -72,4 +74,4 @@ func handle_jump_buffer(body: CharacterBody2D, want_to_jump: bool) -> void:
 	if want_to_jump and not body.is_on_floor() and not body.is_on_wall() and current_air_jump_count == 0:
 		jump_input_buffer.start()
 	if body.is_on_floor() and not jump_input_buffer.is_stopped() and current_air_jump_count == 0:
-		jump(body, jump_velocity)
+		jump(body, jump_velocity, jump_audio)

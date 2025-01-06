@@ -25,6 +25,9 @@ var flip:int = 1
 @export var walk_audio: AudioStreamPlayer
 @export var wall_slide_audio: AudioStreamPlayer
 @export var slide_audio: AudioStreamPlayer
+@export var footstep_audio: AudioStreamPlayer
+
+var footstep_anim_frames: Array = [1,6]
 
 @onready var standing_collision = $StandingCollision
 @onready var crouching_collision = $CrouchingCollision
@@ -101,3 +104,12 @@ func pixelate(delta:float) -> void:
 		if (pixel_size <= 0.001):
 			pixelation_completed = true
 
+func play_footstep_sound():
+	footstep_audio.pitch_scale = randf_range(0.8,1.2)
+	footstep_audio.play()
+
+
+func _on_animated_sprite_2d_frame_changed():
+	if $AnimatedSprite2D.animation == "run":
+		if $AnimatedSprite2D.frame in footstep_anim_frames:
+			play_footstep_sound()
