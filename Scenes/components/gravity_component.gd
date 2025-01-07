@@ -6,6 +6,7 @@ extends Node
 @export var wall_slide_gravity: float = 100
 
 @export_subgroup("Audio")
+@export var wall_attach_audio: AudioStreamPlayer
 @export var wall_slide_audio: AudioStreamPlayer
 
 var is_falling: bool = false
@@ -14,7 +15,7 @@ var last_frame_on_wall: bool = false
 
 func handle_gravity(body: CharacterBody2D, delta: float) -> void:
 	if has_just_wall_slid(body):
-		wall_slide_audio.play()
+		wall_attach_audio.play()
 
 	is_falling = body.velocity.y > 0 and not body.is_on_floor()
 	is_wall_sliding = body.is_on_wall() and not body.is_on_floor()
@@ -27,8 +28,13 @@ func handle_gravity(body: CharacterBody2D, delta: float) -> void:
 			#reduce gravity when wall sliding
 			body.velocity.y += wall_slide_gravity * delta
 			if body.velocity.y >= 100:
-					body.velocity.y = 100	
-		else:
+					body.velocity.y = 100
+			if wall_slide_audio.playing == false:
+				wall_slide_audio.pitch_scale = randf_range(0.9,1.1)
+				wall_slide_audio.play()		
+			
+		else:	
+			wall_slide_audio.stop()		
 			if is_falling:
 				#increase gravity on descent
 				body.velocity.y += gravity * 1.5 * delta
@@ -37,6 +43,7 @@ func handle_gravity(body: CharacterBody2D, delta: float) -> void:
 					body.velocity.y = 500	
 			else:
 				body.velocity.y += gravity * delta
+			
 	last_frame_on_wall = body.is_on_wall()
 
 

@@ -33,12 +33,14 @@ func kill() -> void:
 	handle_death()
 	
 func handle_death() ->void:
-	current_hp = 0
-	is_dead = true
-	death_audio.play()
-	if can_respawn:
-		respawn_timer.wait_time = respawn_delay
-		respawn_timer.start()
+	## cant die if already dead
+	if not is_dead:
+		current_hp = 0
+		is_dead = true
+		death_audio.play()
+		if can_respawn:
+			respawn_timer.wait_time = respawn_delay
+			respawn_timer.start()
 
 func respawn() -> void:
 	respawn_ready = false

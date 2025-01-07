@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cpgg1tgmt042r"]
+[gd_scene load_steps=73 format=3 uid="uid://cpgg1tgmt042r"]
 
 [ext_resource type="Texture2D" uid="uid://58o5fttc8ijb" path="res://Assets/Knight/Colour2/NoOutline/120x80_PNGSheets/_Idle.png" id="1_5riow"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_n52db"]
@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://7cafe5o3sier" path="res://Assets/Audio/playersounds/jump-land-01.mp3" id="20_fyw26"]
 [ext_resource type="AudioStream" uid="uid://sxf51kcjjb7y" path="res://Assets/Audio/playersounds/jump-land-03.mp3" id="21_jimpw"]
 [ext_resource type="AudioStream" uid="uid://ct664vg3ocv61" path="res://Assets/Audio/playersounds/skid.mp3" id="22_cotok"]
+[ext_resource type="AudioStream" uid="uid://cntcin8e1lcgl" path="res://Assets/Audio/playersounds/scratch-62213.mp3" id="23_rg1t8"]
 [ext_resource type="AudioStream" uid="uid://ul406bc7u6d3" path="res://Assets/Audio/playersounds/piano-slam-97095.mp3" id="24_i40a2"]
 [ext_resource type="AudioStream" uid="uid://bgbjprxe54k4w" path="res://Assets/Audio/playersounds/zoom-up-2-slower-delay-107050.mp3" id="25_2h8f8"]
 [ext_resource type="AudioStream" uid="uid://bngglkg5w8vy0" path="res://Assets/Audio/playersounds/armour.mp3" id="26_ock5w"]
@@ -420,9 +421,10 @@ rotation = 1.57836
 shape = SubResource("RectangleShape2D_a4lfo")
 disabled = true
 
-[node name="GravityComponent" parent="." node_paths=PackedStringArray("wall_slide_audio") instance=ExtResource("9_qm0m2")]
+[node name="GravityComponent" parent="." node_paths=PackedStringArray("wall_attach_audio", "wall_slide_audio") instance=ExtResource("9_qm0m2")]
 gravity = 1300.0
-wall_slide_audio = NodePath("../WallSlideAudio")
+wall_attach_audio = NodePath("../WallSlideAudio")
+wall_slide_audio = NodePath("../WallSlideAudio2")
 
 [node name="InputComponent" parent="." instance=ExtResource("10_7vrsc")]
 
@@ -472,6 +474,11 @@ bus = &"SFX"
 
 [node name="WallSlideAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("21_jimpw")
+bus = &"SFX"
+
+[node name="WallSlideAudio2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_rg1t8")
+volume_db = -20.0
 bus = &"SFX"
 
 [node name="SlideAudio" type="AudioStreamPlayer" parent="."]

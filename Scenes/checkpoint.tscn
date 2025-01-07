@@ -1,21 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://deqkwfyl3jov7"]
+[gd_scene load_steps=10 format=3 uid="uid://deqkwfyl3jov7"]
 
 [ext_resource type="Script" path="res://Scenes/checkpoint.gd" id="1_uci4j"]
-[ext_resource type="Texture2D" uid="uid://dkghj55ru4eo0" path="res://Assets/Image21.png" id="2_8jaku"]
+[ext_resource type="Texture2D" uid="uid://cyu4g1i2a6pdx" path="res://Assets/flag/flaganim4.png" id="2_645m5"]
+[ext_resource type="Texture2D" uid="uid://pu0glfkwr04m" path="res://Assets/flag/flaganim1.png" id="3_4g3yr"]
+[ext_resource type="Texture2D" uid="uid://bce4kilgdrhhp" path="res://Assets/flag/flaganim2.png" id="4_xjq78"]
+[ext_resource type="Texture2D" uid="uid://cxwsxo6hp0ank" path="res://Assets/flag/flaganim3.png" id="5_an2na"]
+[ext_resource type="AudioStream" uid="uid://cx66ugtqixb8r" path="res://Assets/Audio/playersounds/piano-plinks-84919.mp3" id="6_yelis"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw4es"]
+atlas = ExtResource("2_645m5")
+region = Rect2(0, 0, 15, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3sj12"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4g3yr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xjq78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_an2na")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw4es")
+}],
+"loop": false,
+"name": &"inactive",
+"speed": 2.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6wna"]
 size = Vector2(21, 31)
 
-[node name="Checkpoint" type="Area2D"]
+[node name="Checkpoint" type="Area2D" node_paths=PackedStringArray("sprite", "checkpoint_audio")]
 script = ExtResource("1_uci4j")
+sprite = NodePath("AnimatedSprite2D")
+checkpoint_audio = NodePath("CheckpointAudio")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -13)
-scale = Vector2(0.328125, 0.5)
-texture = ExtResource("2_8jaku")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_3sj12")
+animation = &"active"
+autoplay = "inactive"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, -14.5)
 shape = SubResource("RectangleShape2D_i6wna")
+
+[node name="CheckpointAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_yelis")
+volume_db = -10.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
