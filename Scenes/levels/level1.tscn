@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dd1umhxft0pc1"]
+[gd_scene load_steps=17 format=3 uid="uid://dd1umhxft0pc1"]
 
 [ext_resource type="PackedScene" uid="uid://cpgg1tgmt042r" path="res://Scenes/player.tscn" id="1_myysj"]
 [ext_resource type="Texture2D" uid="uid://dnpg6gblmiom" path="res://Assets/Swamp/Terrain_and_Props.png" id="2_5nqc2"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://dcs02ud4vxoxi" path="res://Scenes/spikes.tscn" id="6_n2xhy"]
 [ext_resource type="PackedScene" uid="uid://c6ko3ldmklk1c" path="res://Scenes/level_end.tscn" id="9_rr1bu"]
 [ext_resource type="Texture2D" uid="uid://bejac5cxvoydp" path="res://Assets/Tree_1_256b.png" id="10_xingo"]
+[ext_resource type="PackedScene" uid="uid://ca0lxukll6iro" path="res://Scenes/ambient_noise_player.tscn" id="12_24vv3"]
+[ext_resource type="AudioStream" uid="uid://dvvlunqd8so5m" path="res://Assets/Audio/cave-wind-10-76283.mp3" id="13_q70ei"]
+[ext_resource type="AudioStream" uid="uid://rrs7qh6irec3" path="res://Assets/Audio/water-drops-6223.mp3" id="14_y177e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yinux"]
 texture = ExtResource("2_5nqc2")
@@ -1420,3 +1423,17 @@ level_to_load = 2
 position = Vector2(4949, -133)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_xingo")
+
+[node name="AmbientNoisePlayer" parent="." node_paths=PackedStringArray("constant_sound", "random_sound") instance=ExtResource("12_24vv3")]
+constant_sound = NodePath("CaveWindAudio")
+random_sound = NodePath("WaterDropAudio")
+random_sound_range_min = 3.0
+random_sound_range_max = 8.0
+
+[node name="CaveWindAudio" type="AudioStreamPlayer" parent="AmbientNoisePlayer"]
+stream = ExtResource("13_q70ei")
+volume_db = -15.0
+
+[node name="WaterDropAudio" type="AudioStreamPlayer" parent="AmbientNoisePlayer"]
+stream = ExtResource("14_y177e")
+volume_db = -15.0

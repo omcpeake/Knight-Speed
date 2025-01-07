@@ -24,8 +24,8 @@
 [ext_resource type="AudioStream" uid="uid://sxf51kcjjb7y" path="res://Assets/Audio/playersounds/jump-land-03.mp3" id="21_jimpw"]
 [ext_resource type="AudioStream" uid="uid://ct664vg3ocv61" path="res://Assets/Audio/playersounds/skid.mp3" id="22_cotok"]
 [ext_resource type="AudioStream" uid="uid://cntcin8e1lcgl" path="res://Assets/Audio/playersounds/scratch-62213.mp3" id="23_rg1t8"]
-[ext_resource type="AudioStream" uid="uid://ul406bc7u6d3" path="res://Assets/Audio/playersounds/piano-slam-97095.mp3" id="24_i40a2"]
 [ext_resource type="AudioStream" uid="uid://bgbjprxe54k4w" path="res://Assets/Audio/playersounds/zoom-up-2-slower-delay-107050.mp3" id="25_2h8f8"]
+[ext_resource type="AudioStream" uid="uid://copyafgnky0q7" path="res://Assets/Audio/playersounds/678404__sweer_paradox__piano_keysmash.mp3" id="25_8kdmb"]
 [ext_resource type="AudioStream" uid="uid://bngglkg5w8vy0" path="res://Assets/Audio/playersounds/armour.mp3" id="26_ock5w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24p70"]
@@ -454,18 +454,18 @@ respawn_audio = NodePath("../RespawnAudio")
 
 [node name="JumpAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_f0auw")
-volume_db = -15.0
+volume_db = -25.0
 bus = &"SFX"
 
 [node name="AirJumpAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_f0auw")
-volume_db = -15.0
+volume_db = -25.0
 pitch_scale = 1.2
 bus = &"SFX"
 
 [node name="WallJumpAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_yjahw")
-volume_db = -5.0
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="LandAudio" type="AudioStreamPlayer" parent="."]
@@ -488,13 +488,14 @@ pitch_scale = 0.82
 bus = &"SFX"
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("24_i40a2")
-volume_db = -15.0
+stream = ExtResource("25_8kdmb")
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="RespawnAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("25_2h8f8")
 volume_db = -10.0
+pitch_scale = 0.9
 bus = &"SFX"
 
 [node name="StepAudio" type="AudioStreamPlayer" parent="."]

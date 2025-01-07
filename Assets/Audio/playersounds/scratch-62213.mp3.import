@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/scratch-62213.mp3-0f2e4c5dd7e03075a02afc4acf9
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

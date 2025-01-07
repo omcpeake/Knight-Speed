@@ -14,6 +14,7 @@ func _on_body_entered(body:CharacterBody2D):
 		if(activated == false):
 			sprite.play("active")
 			checkpoint_audio.play()
+			activated=true
 
 func save_spawn_point(player : Player) -> void:
 	player.update_spawn_point(self.position)

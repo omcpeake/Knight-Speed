@@ -22,7 +22,7 @@ func handle_gravity(body: CharacterBody2D, delta: float) -> void:
 	
 	
 	
-
+	
 	if not body.is_on_floor():
 		if is_wall_sliding and body.velocity.y > 0:
 			#reduce gravity when wall sliding
@@ -44,6 +44,8 @@ func handle_gravity(body: CharacterBody2D, delta: float) -> void:
 			else:
 				body.velocity.y += gravity * delta
 			
+	else:
+		wall_slide_audio.stop()		
 	last_frame_on_wall = body.is_on_wall()
 
 
