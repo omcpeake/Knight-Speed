@@ -24,9 +24,9 @@
 [ext_resource type="AudioStream" uid="uid://sxf51kcjjb7y" path="res://Assets/Audio/playersounds/jump-land-03.mp3" id="21_jimpw"]
 [ext_resource type="AudioStream" uid="uid://ct664vg3ocv61" path="res://Assets/Audio/playersounds/skid.mp3" id="22_cotok"]
 [ext_resource type="AudioStream" uid="uid://cntcin8e1lcgl" path="res://Assets/Audio/playersounds/scratch-62213.mp3" id="23_rg1t8"]
-[ext_resource type="AudioStream" uid="uid://bgbjprxe54k4w" path="res://Assets/Audio/playersounds/zoom-up-2-slower-delay-107050.mp3" id="25_2h8f8"]
-[ext_resource type="AudioStream" uid="uid://copyafgnky0q7" path="res://Assets/Audio/playersounds/678404__sweer_paradox__piano_keysmash.mp3" id="25_8kdmb"]
+[ext_resource type="AudioStream" uid="uid://cpcubnnfiv3hq" path="res://Assets/Audio/church-bell-1.mp3" id="25_qp3cy"]
 [ext_resource type="AudioStream" uid="uid://bngglkg5w8vy0" path="res://Assets/Audio/playersounds/armour.mp3" id="26_ock5w"]
+[ext_resource type="AudioStream" uid="uid://b5wpqs7k5hcuv" path="res://Assets/Audio/magic_spell_10-39689.mp3" id="26_qsjcn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24p70"]
 atlas = ExtResource("2_g1kn6")
@@ -488,14 +488,14 @@ pitch_scale = 0.82
 bus = &"SFX"
 
 [node name="DeathAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("25_8kdmb")
-volume_db = 10.0
+stream = ExtResource("25_qp3cy")
+volume_db = -10.0
+pitch_scale = 0.9
 bus = &"SFX"
 
 [node name="RespawnAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("25_2h8f8")
-volume_db = -10.0
-pitch_scale = 0.9
+stream = ExtResource("26_qsjcn")
+volume_db = -15.0
 bus = &"SFX"
 
 [node name="StepAudio" type="AudioStreamPlayer" parent="."]

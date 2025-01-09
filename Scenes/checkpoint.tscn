@@ -33,7 +33,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"inactive",
-"speed": 2.0
+"speed": 0.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6wna"]
@@ -57,5 +57,6 @@ shape = SubResource("RectangleShape2D_i6wna")
 [node name="CheckpointAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_yelis")
 volume_db = -10.0
+pitch_scale = 0.9
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

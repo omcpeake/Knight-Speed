@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6ko3ldmklk1c"]
+[gd_scene load_steps=6 format=3 uid="uid://c6ko3ldmklk1c"]
 
 [ext_resource type="Script" path="res://Scenes/level_end.gd" id="1_pbxo7"]
 [ext_resource type="PackedScene" uid="uid://c0g34lrf6y3sr" path="res://Scenes/UI/level_completed_menu.tscn" id="2_2kguc"]
 [ext_resource type="Texture2D" uid="uid://dio4dvvfwphjp" path="res://Assets/parallaxcave/8fx.png" id="2_e8edy"]
+[ext_resource type="AudioStream" uid="uid://u6ff87hedwcr" path="res://Assets/Audio/ahhhh-37191.mp3" id="4_h4njk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k42ub"]
 size = Vector2(124, 70)
@@ -19,5 +20,11 @@ shape = SubResource("RectangleShape2D_k42ub")
 position = Vector2(0, -65)
 scale = Vector2(0.0800007, 0.12)
 texture = ExtResource("2_e8edy")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_h4njk")
+volume_db = -10.0
+autoplay = true
+max_distance = 300.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2llx65hrhkdq"]
+[gd_scene load_steps=6 format=3 uid="uid://b2llx65hrhkdq"]
 
 [ext_resource type="Script" path="res://Scenes/UI/menu.gd" id="1_4whq7"]
 [ext_resource type="Texture2D" uid="uid://bvcl6hcmndnun" path="res://Assets/speedoknight.png" id="2_lenxv"]
+[ext_resource type="AudioStream" uid="uid://bmbh0hm02hf6a" path="res://Assets/Audio/horror-thriller-action-247745.mp3" id="3_b62kv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n72py"]
 texture = ExtResource("2_lenxv")
@@ -61,7 +62,13 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = SubResource("SystemFont_mvtk5")
 theme_override_font_sizes/font_size = 100
-text = "Speed of Knight"
+text = "Knight Speed"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_b62kv")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

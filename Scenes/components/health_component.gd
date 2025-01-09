@@ -46,6 +46,7 @@ func respawn() -> void:
 	respawn_ready = false
 	current_hp = max_hp
 	is_dead = false
+	respawn_audio.pitch_scale = randf_range(0.8,0.9)
 	respawn_audio.play()
 
 func _on_respawn_timer_timeout():
