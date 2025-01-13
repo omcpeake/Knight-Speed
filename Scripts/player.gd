@@ -11,6 +11,8 @@ extends CharacterBody2D
 @export var slide_component: SlideComponent
 @export var health_component: HealthComponent
 
+@export var menu :PackedScene
+
 @export var pixelation: ColorRect
 var pixel_size: float = 0.001
 var pixel_size_delta = 0.08
@@ -36,13 +38,17 @@ var spawn_point : Vector2
 var movement_enabled : bool = true
 
 
+
 func _ready():
 	GlobalGameTimer.reset()
 	GlobalGameTimer.stopped = false
 
 func _physics_process(delta):
+	if input_component.get_pause_input():
+			toggle_pause_game()
 	gravity_component.handle_gravity(self, delta)
 	if(movement_enabled):
+		
 		#ground
 		slide_component.handle_slide(self, input_component.get_slide_input())
 		movement_component.handle_horizontal_movement(self, input_component.input_horizontal, slide_component.is_sliding, gravity_component.is_falling)
@@ -113,3 +119,12 @@ func _on_animated_sprite_2d_frame_changed():
 	if $AnimatedSprite2D.animation == "run":
 		if $AnimatedSprite2D.frame in footstep_anim_frames:
 			play_footstep_sound()
+			
+func toggle_pause_game():
+	if get_tree().paused == false:
+		var instance: PauseMenu = menu.instantiate()
+		get_tree().current_scene.add_child(instance)
+		get_tree().paused = true
+		
+	else:
+		get_tree().paused = false

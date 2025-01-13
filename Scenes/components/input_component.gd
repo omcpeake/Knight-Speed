@@ -15,3 +15,6 @@ func get_jump_input_released() -> bool:
 	
 func get_slide_input() -> bool:
 	return Input.is_action_pressed("slide")
+
+func get_pause_input() -> bool:
+	return Input.is_action_just_pressed("pause")

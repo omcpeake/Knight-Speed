@@ -2313,7 +2313,7 @@ rotation = -1.5708
 [node name="WallJumpSpikeGroup" type="Node2D" parent="Traps"]
 
 [node name="Spikes2" parent="Traps/WallJumpSpikeGroup" instance=ExtResource("5_bvpie")]
-position = Vector2(1711, -822)
+position = Vector2(1711, -819)
 rotation = 1.5708
 
 [node name="Spikes4" parent="Traps/WallJumpSpikeGroup" instance=ExtResource("5_bvpie")]
