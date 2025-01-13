@@ -365,7 +365,7 @@ height = 35.999
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4lfo"]
 size = Vector2(10.6874, 20.3716)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "wall_jump_component", "slide_component", "health_component", "pixelation", "jump_audio", "air_jump_audio", "wall_jump_audio", "land_audio", "walk_audio", "wall_slide_audio", "slide_audio", "footstep_audio")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "wall_jump_component", "slide_component", "health_component", "pixelation", "jump_audio", "air_jump_audio", "wall_jump_audio", "land_audio", "walk_audio", "wall_slide_audio", "slide_audio", "footstep_audio") groups=["Player"]]
 z_index = 5
 floor_snap_length = 10.0
 script = ExtResource("1_n52db")
