@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="Knight Speed"
+config/version="0.1.3"
 run/main_scene="res://Scenes/UI/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://favicon.ico"
+config/windows_native_icon="res://favicon.ico"
 
 [autoload]
 

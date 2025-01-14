@@ -30,7 +30,7 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 50
+theme_override_constants/separation = 20
 
 [node name="LevelCompletedLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -66,17 +66,6 @@ theme_override_fonts/font = SubResource("SystemFont_857ch")
 theme_override_font_sizes/font_size = 32
 text = "Respawn"
 
-[node name="RestartLevelButton" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = SubResource("SystemFont_857ch")
-theme_override_font_sizes/font_size = 32
-text = "Restart Level"
-
 [node name="QuitToMenuButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
@@ -90,5 +79,4 @@ text = "Quit To Menu"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/RespawnButton" to="." method="_on_respawn_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/RestartLevelButton" to="." method="_on_restart_level_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitToMenuButton" to="." method="_on_quit_to_menu_button_pressed"]
